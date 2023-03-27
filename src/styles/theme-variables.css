@@ -1,0 +1,12 @@
+:root {
+  --fullBlackColor: black;
+  --customBlackColor: #2a2b2e;
+  --primaryColor: #a5cb54;
+  --primaryGreyColor: #f2f2f2;
+
+  --primaryFont: 'Roboto';
+  --secondaryFont: 'Roboto Mono';
+  --logoFont: 'Rosarivo';
+
+  --primaryBorderRadius: 15;
+}
