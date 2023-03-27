@@ -1,5 +1,4 @@
 import React from 'react'
-import './App.css'
 import { useSelector, useDispatch } from 'react-redux'
 import { setExample } from './redux/slices/example'
 
