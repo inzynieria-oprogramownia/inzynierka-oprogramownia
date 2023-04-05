@@ -1,16 +1,18 @@
 import React from 'react'
-import { useSelector, useDispatch } from 'react-redux'
-import { setExample } from './redux/slices/example'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import Nav from './components/sections/Nav'
 
-function App() {
-  const value = useSelector((state) => state.example.value)
-  const dispach = useDispatch()
-  return (
-    <div className="App">
-      <input onChange={(e) => dispach(setExample(e.target.value))} />
-      <p>{value}</p>
-    </div>
-  )
-}
+const App = () => (
+  <div className="App">
+    <BrowserRouter>
+      <Routes>
+        <Route index element={<Nav />} />
+        <Route path="premium" element={null} />
+        <Route path="blog" element={null} />
+        <Route path="login" element={null} />
+      </Routes>
+    </BrowserRouter>
+  </div>
+)
 
 export default App
