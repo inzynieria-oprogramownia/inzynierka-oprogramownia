@@ -1,18 +1,15 @@
 import React from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import Start from './components/pages/Start'
-import Premium from './components/pages/Premium'
-import Blog from './components/pages/Blog'
-import Login from './components/pages/Login'
+import Nav from './components/sections/Nav'
 
 const App = () => (
   <div className="App">
     <BrowserRouter>
       <Routes>
-        <Route index element={<Start />} />
-        <Route path="premium" element={<Premium />} />
-        <Route path="blog" element={<Blog />} />
-        <Route path="login" element={<Login />} />
+        <Route index element={<Nav />} />
+        <Route path="premium" element={null} />
+        <Route path="blog" element={null} />
+        <Route path="login" element={null} />
       </Routes>
     </BrowserRouter>
   </div>
