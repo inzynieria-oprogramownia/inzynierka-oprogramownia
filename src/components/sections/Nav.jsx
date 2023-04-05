@@ -11,21 +11,20 @@ const Nav = () => {
   return (
     <nav>
       <div>
-        <NavLink to="/" className="logo">
+        <NavLink to="/" className="nav-logo">
           NutriPlan
         </NavLink>
       </div>
       <div ref={navRef} className="nav-links">
-        <NavLink to="/premium">Premium</NavLink>
-        <NavLink to="/blog">Blog</NavLink>
-        <NavLink to="/login">Zaloguj</NavLink>
-        <button
-          type="button"
-          className="nav-btn close-btn"
-          onClick={handleNavBarClick}
-        >
-          <i className="fa-solid fa-x" />
-        </button>
+        <NavLink className="nav-link" to="/premium">
+          Premium
+        </NavLink>
+        <NavLink className="nav-link" to="/blog">
+          Blog
+        </NavLink>
+        <NavLink className="nav-link" to="/login">
+          Zaloguj
+        </NavLink>
       </div>
       <button type="button" className="nav-btn" onClick={handleNavBarClick}>
         <i className="fa-solid fa-bars" />
