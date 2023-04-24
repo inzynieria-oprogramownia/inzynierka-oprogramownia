@@ -36,7 +36,9 @@
     "import/no-extraneous-dependencies": [
       "error",
       {
-        "devDependencies": ["**/*.test.ts", "**/*.test.tsx"]
+        "devDependencies": false,
+        "optionalDependencies": false,
+        "peerDependencies": false
       }
     ]
   }
