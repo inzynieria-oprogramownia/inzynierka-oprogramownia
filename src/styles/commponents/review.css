@@ -1,5 +1,0 @@
-.review--wrapper {
-  width: clamp(200px, 40%, 400px);
-  display: flex;
-  flex-direction: column;
-}

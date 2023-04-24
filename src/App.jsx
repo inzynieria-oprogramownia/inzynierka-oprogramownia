@@ -11,9 +11,11 @@ const App = () => {
       <input onChange={(e) => dispach(setExample(e.target.value))} />
       <p>{value}</p>
       <Review
-        text="Świetna aplikacja, chyba nie miałem jeszcze sytuacji żeby nie było produktu któego szukałem, a przy tym aplikacja nie wtrąca się w to co robimy :-)"
-        user="Krzysztof K."
-        rate={5}
+        text="Jak to się mówi Płyn Chodnikowy wlewamy
+        Miałeś lotnisko robić, robisz?
+        Od tyłu, 3 centymetry bliżej"
+        user="Jan Ł Borodo"
+        rate={2}
       />
     </div>
   )
