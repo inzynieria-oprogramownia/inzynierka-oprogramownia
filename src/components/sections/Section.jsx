@@ -7,7 +7,7 @@ const Section = () => (
   <div className="section">
     <div className="section-box">
       <div>
-        <p>
+        <p className="section-text">
           Dzięki NutriPlan nie musisz rezygnować z ulubionych potraw, a
           jednocześnie możesz uniknąć niezdrowych nawyków żywieniowych.
         </p>
@@ -16,7 +16,7 @@ const Section = () => (
     </div>
     <div className="section-box">
       <div>
-        <p>
+        <p className="section-text">
           NutriPlan to aplikacja żywieniowa, która zyskała zaufanie tysięcy
           klientów. Dzięki jej innowacyjnym rozwiązaniom, użytkownicy mogą
           kontrolować swoją dietę i osiągać zamierzone cele zdrowotne.
