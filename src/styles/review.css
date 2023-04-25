@@ -1,0 +1,10 @@
+.review--wrapper {
+  width: clamp(200px, 40%, 400px);
+  display: flex;
+  flex-direction: column;
+  font-family: var(--secondaryFont);
+  display: inline-block;
+}
+.review--text{
+  margin:1rem 0 1rem 0;
+}
