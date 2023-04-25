@@ -1,0 +1,85 @@
+.section {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--primaryColor);
+  padding: 20px 10px 20px 10px;
+  margin: 0 auto;
+  z-index: -1;
+  overflow: hidden;
+}
+.section-text {
+  font-family: var(--secondaryFont);
+}
+.section::after,
+.section::before {
+  content: '';
+  position: absolute;
+  width: 1440px;
+  left: -30%;
+  height: 25px;
+  background-color: #fff;
+  z-index: 0;
+  display: none;
+}
+
+.section::after {
+  top: 30%;
+  transform: rotate(140deg);
+}
+
+.section::before {
+  top: 70%;
+  transform: rotate(40deg);
+}
+
+.section-box {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  padding: 20px 20px 0 20px;
+  width: 100%;
+  max-width: 425px;
+  background-color: #fff;
+  z-index: 1;
+}
+
+.section-box div {
+  max-width: 300px;
+  border-radius: var(--primaryBorderRadius);
+}
+
+img {
+  width: 300px;
+}
+
+@media only screen and (min-width: 375px) {
+  .section-box {
+    padding: 20px 20px 20px 20px;
+  }
+}
+
+@media only screen and (min-width: 670px) {
+  .section::after,
+  .section::before {
+    display: block;
+  }
+  .section-box {
+    justify-content: space-evenly;
+    background-color: transparent;
+    max-width: 1024px;
+  }
+
+  .section-box div {
+    background-color: #fff;
+    padding: 30px;
+  }
+
+  .section-box:nth-child(2) div {
+    order: 1;
+  }
+}

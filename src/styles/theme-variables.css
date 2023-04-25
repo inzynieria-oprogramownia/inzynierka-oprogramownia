@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Rosarivo&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Roboto&family=Roboto+Mono&display=swap');
 :root {
   --fullBlackColor: black;
   --customBlackColor: #2a2b2e;
@@ -13,5 +13,5 @@
   --secondaryFont: 'Roboto Mono';
   --logoFont: 'Rosarivo';
 
-  --primaryBorderRadius: 15;
+  --primaryBorderRadius: 10px;
 }

@@ -9,7 +9,7 @@ const Nav = () => {
     navRef.current.classList.toggle('mobile-nav')
   }
   return (
-    <nav>
+    <nav className="nav">
       <div>
         <NavLink to="/" className="nav-logo">
           NutriPlan
