@@ -1,10 +1,18 @@
 .review--wrapper {
-  width: clamp(200px, 40%, 400px);
   display: flex;
   flex-direction: column;
   font-family: var(--secondaryFont);
   display: inline-block;
+  font-size: 1.315em;
 }
-.review--text{
-  margin:1rem 0 1rem 0;
+.review--wrapper img {
+  width: 20px;
+}
+.review--text {
+  margin: 1rem 0 1rem 0;
+}
+@media only screen and (min-width: 1400px){
+  .review--wrapper{
+    max-width: 30%;
+  }
 }

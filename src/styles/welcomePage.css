@@ -1,3 +1,9 @@
+.headingImage {
+  padding: min(4vw, 4.85rem);
+}
+.headingImage img {
+  width: 100%;
+}
 .section {
   position: relative;
   display: flex;
@@ -18,7 +24,7 @@
   position: absolute;
   width: 1440px;
   left: -30%;
-  height: 25px;
+  height: 80px;
   background-color: #fff;
   z-index: 0;
   display: none;
@@ -53,10 +59,12 @@
   border-radius: var(--primaryBorderRadius);
 }
 
-img {
+.section img {
   width: 300px;
 }
-
+p {
+  line-height: 1.3;
+}
 @media only screen and (min-width: 375px) {
   .section-box {
     padding: 20px 20px 20px 20px;
@@ -81,5 +89,46 @@ img {
 
   .section-box:nth-child(2) div {
     order: 1;
+  }
+}
+.functions,
+.opinions {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: min(4vw, 4.85rem);
+  margin-top: 60px;
+}
+.functions {
+  background-color: var(--primaryGreyColor);
+}
+.functions--heading,
+.options--heading {
+  font-family: var(--primaryFont);
+  font-size: var(--headingFontSize);
+  text-align: center;
+}
+.functions--wrapper {
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  display: grid;
+  margin-top: 5.31em;
+  gap: 5.2em;
+  font-family: var(--secondaryFont);
+}
+.functions--option {
+  text-align: center;
+  display: inline-block;
+  font-size: clamp(16px, 1.415rem, 2rem);
+}
+.opinions--wrapper {
+  margin-top: 5.31em;
+  display: flex;
+  justify-content: center;
+  gap: 5.2em;
+}
+@media only screen and (max-width: 750px) {
+  .opinions--wrapper {
+    flex-direction: column;
+    justify-content: center;
   }
 }
