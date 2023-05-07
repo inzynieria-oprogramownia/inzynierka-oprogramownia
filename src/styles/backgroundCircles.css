@@ -1,0 +1,32 @@
+.circle {
+  top: 0;
+  left: 10%;
+  width: 420px;
+  height: 420px;
+  position: absolute;
+  border-radius: 50%;
+  background-color: var(--primaryColor);
+}
+
+.circle:nth-child(2) {
+  bottom: -225px;
+  left: -225px;
+  width: 450px;
+  height: 450px;
+  top: inherit;
+}
+
+.circle:nth-child(3) {
+  top: 65%;
+  left: 65%;
+  width: 250px;
+  height: 250px;
+}
+
+.circle:nth-child(4) {
+  top: 40%;
+  right: -110px;
+  left: inherit;
+  width: 220px;
+  height: 220px;
+}

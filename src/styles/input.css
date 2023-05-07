@@ -1,0 +1,22 @@
+.input--wrapper {
+  background-color: var(--primaryGreyColor);
+  padding: 15px 20px;
+  font-family: var(--primaryFont);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  font-size: var(--lFontSize);
+}
+.input {
+  width: 100%;
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+.hidden {
+  display: none;
+}
+.input--label {
+  position: absolute;
+}

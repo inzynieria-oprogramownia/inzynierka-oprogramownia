@@ -1,0 +1,17 @@
+.button {
+  padding: 25px 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: var(--primaryFont);
+  background-color: var(--customBlackColor);
+  color: var(--primaryWhiteColor);
+  font-size: var(--lFontSize);
+  transition: 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: var(--primaryColor);
+  color: var(--customBlackColor);
+}
