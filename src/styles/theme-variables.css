@@ -5,6 +5,7 @@
   --fullBlackColor: black;
   --customBlackColor: #2a2b2e;
   --primaryColor: #a5cb54;
+  --secondaryColor: #ff8700;
   --primaryGreyColor: #f2f2f2;
   --primaryWhiteColor: #ffffff;
   --logoColor: #1e1e1e;
@@ -15,7 +16,9 @@
 
   --primaryBorderRadius: 10px;
   --headingFontSize: 50px;
+  --nFontSize:16px;
   --mFontSize: 20px;
   --lFontSize: 26px;
+  --xlFontSize: 36px;
   --primaryShadow: drop-shadow(3px 4px 9px rgba(0, 0, 0, 0.25));
 }

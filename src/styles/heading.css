@@ -1,0 +1,31 @@
+* .heading--wrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.line {
+  background-color: red;
+  height: 1px;
+  flex-grow: 1;
+  flex-shrink: 0;
+  box-sizing: border-box; /* Add this property */
+}
+
+.heading--text {
+  white-space: nowrap;
+  margin: 0 10px;
+  font-weight: bold;
+  font-size: var(--xlFontSize);
+  font-family: var(--primaryFont);
+  text-align: center;
+}
+
+.secondary {
+  background-color: var(--secondaryColor);
+}
+
+.primary {
+  background-color: var(--primaryColor);
+}

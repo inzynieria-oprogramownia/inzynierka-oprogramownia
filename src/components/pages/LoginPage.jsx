@@ -13,7 +13,7 @@ const LoginPage = () => (
         <h2 className="login--heading">Logowanie</h2>
         <form action="login" className="login--form">
           <Input label="Username" id="username" />
-          <Input label="Password" id="password" />
+          <Input label="Password" type="password" id="password" />
           <Button type="submit">
             <p>Zaloguj</p>
           </Button>
