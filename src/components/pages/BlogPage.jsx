@@ -4,6 +4,8 @@ import Page from '../parts/Page'
 import Heading from '../parts/Heading'
 import PostItem from '../parts/PostItem'
 import Button from '../parts/Button'
+import RecipeItem from '../parts/RecepieItem'
+
 import '../../styles/blogPage.css'
 
 const PostItemMockData = {
@@ -14,6 +16,15 @@ const PostItemMockData = {
   // eslint-disable-next-line prettier/prettier
   img: 'src\\assets\\welcomePage\\main.png',
   date: '20 kwietnia 2020',
+}
+const recepieItemData = {
+  title: 'Wegetariańska tortilla zwarzywami i ryżem',
+  // eslint-disable-next-line prettier/prettier
+  img: 'src\\assets\\welcomePage\\main.png',
+  person: 1,
+  time: '20min.',
+  kcal: '200kcal',
+  option: 'redukcja',
 }
 const BlogPage = () => (
   <Page>
@@ -38,6 +49,24 @@ const BlogPage = () => (
         </Button>
       </section>
       <div className="add">GORACE OFERTY W TWOJEJ OKOLICY HIT!!!</div>
+      <section className="recepies">
+        <Heading className="recepies--heading" type="primary">
+          <h4>Twoje Przepisy</h4>
+        </Heading>
+        <div className="recepies--wrapper">
+          <RecipeItem data={recepieItemData} />
+          <RecipeItem data={recepieItemData} />
+          <RecipeItem data={recepieItemData} />
+        </div>
+        <div className="recepies--wrapper__buttons">
+          <Button className="recepies--button">
+            <p>Dodaj przepis</p>
+          </Button>
+          <Button className="recepies--button">
+            <p>Wszystkie przepisy</p>
+          </Button>
+        </div>
+      </section>
     </section>
   </Page>
 )

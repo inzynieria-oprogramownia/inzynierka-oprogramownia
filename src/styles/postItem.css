@@ -58,7 +58,6 @@
 }
 .large {
   max-width: 100%;
-  width: 100%;
 }
 .small {
   max-width: 550px;
@@ -68,6 +67,12 @@
     flex-direction: column;
   }
   .small {
+    max-width: unset;
+  }
+}
+@media only screen and (max-width: 410px) {
+  .post--img {
+    max-width: 100%;
     max-width: unset;
   }
 }
