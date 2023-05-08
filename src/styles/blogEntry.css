@@ -1,0 +1,136 @@
+h2 {
+  font-size: var(--lFontSize);
+}
+
+h3 {
+  font-size: var(--mFontSize);
+}
+
+.entry-header {
+  font-family: var(--primaryFont);
+  font-size: var(--headingFontSize);
+  position: relative;
+  width: 100%;
+  height: 400px;
+  background-image: url("../assets/blogEntry/entry.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white;
+}
+
+.entry-header div {
+  position: absolute;
+  width: inherit;
+  height: inherit;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(10, 0, 0,50%);
+  text-align: center;
+}
+
+.entry-header div h1 {
+  width: 90%;
+}
+
+.entry {
+  font-family: var(--primaryFont);
+  margin: 20px min(4vw, 4.85rem);
+}
+
+.entry-title-box {
+  margin: 20px 0;
+}
+
+.entry-date {
+  color: var(--primaryColor);
+}
+
+.entry-image {
+  width: 90%;
+  margin: 20px auto;
+}
+
+.entry-image img {
+  width: 100%;
+}
+
+.entry-box {
+  margin: 10px 0;
+}
+
+.entry-box h2, .entry-box h3 {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.entry-links, .entry-comment {
+  margin: 50px 0 30px 0;
+}
+
+.entry-links p {
+  padding-top: 20px;
+}
+
+.entry-links h2, .entry-comment h2 {
+  text-align: center;
+}
+
+.entry-links a {
+  color: var(--primaryColor);
+  text-decoration: none;
+}
+
+.entry-comment h2 {
+  margin-bottom: 20px;
+}
+
+.nick {
+  color: var(--secondaryColor);
+  font-weight: bold;
+}
+
+.comment {
+  border: 1px solid #D4D4D4;
+  margin: 15px 0;
+  padding: 15px;
+}
+
+.comment-form {
+  margin-top: 50px;
+}
+
+.comment-form p {
+  font-weight: bold;
+}
+
+.comment-form textarea {
+  width: 80%;
+  background-color: #E1E1E1;
+  border: 1px solid #838383;
+  padding: 10px;
+  margin: 10px 0;
+}
+
+.comment-form input[type="submit"]:enabled {
+  background-color: var(--primaryColor);
+  padding: 10px;
+  color: var(--primaryWhiteColor);
+  cursor: pointer;
+}
+
+.comment-form input[type="submit"]:disabled {
+  background-color: var(--customBlackColor);
+  padding: 10px;
+  color: var(--primaryWhiteColor);
+}
+
+@media only screen and (max-width: 425px) {
+  .entry-image {
+    display: none;
+  }
+}
