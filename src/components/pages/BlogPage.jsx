@@ -9,10 +9,10 @@ import RecipeItem from '../parts/RecepieItem'
 import '../../styles/blogPage.css'
 
 const PostItemMockData = {
-  title: 'Dupa',
+  title: 'Piosenki opole mock 2020',
   description:
-    'loajsdlkasj kajsdl asjdlahqkjwehkqjwhekqwjhekjqwhekjqwhkjajsldasdlaksdjalsjdlasjdlaksdjdaklsjdklasjdlkasjlaklsdalksdjlaksdjlkasjdlkjdlkajsdlkajsldkjaslkdjalskdjklasdjlehqkwehkqwhekqwjhksd jlaks jd',
-  genre: ['cyce', 'wadowice'],
+    'Wlazł kotek na płotek i mruga krótka to piosenka nie długa. Koziołek matołek stuka w stołek',
+  genre: ['test1', 'test2'],
   // eslint-disable-next-line prettier/prettier
   img: 'src\\assets\\welcomePage\\main.png',
   date: '20 kwietnia 2020',
