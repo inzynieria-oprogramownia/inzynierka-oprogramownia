@@ -1,0 +1,85 @@
+.blog {
+  padding: 20px 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.dayli--heading,
+.fitatuBlog--heading,
+.recepies--heading {
+  margin: 6em 0;
+}
+.dayli,
+.fitatuBlog {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+}
+.fitatuBlog--wrapper {
+  margin: 6em 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 20px;
+}
+.fitatuBlog--button {
+  background-color: var(--secondaryColor);
+  border-radius: 4px;
+  padding: 12px 24px;
+  align-self: flex-end;
+}
+.fitatuBlog--button:hover {
+  color: var(--primaryWhiteColor);
+}
+.add {
+  margin: 6rem 0;
+  text-align: center;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: clamp(16px, 4vw, 22px);
+  color: white;
+  width: 100%;
+}
+.recepies {
+  width: 100%;
+}
+.recepies--wrapper {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 20px;
+  margin-bottom: 20px;
+}
+.recepies--button {
+  background-color: transparent;
+  color: var(--primaryColor);
+  border-radius: 4px;
+  padding: 12px 24px;
+  align-self: flex-end;
+}
+.recepies--wrapper__buttons {
+  display: flex;
+  justify-content: end;
+  margin: 50px 0;
+}
+@media only screen and (max-width: 550px) {
+  .blog {
+    padding: 5px 5px;
+  }
+  .fitatuBlog--wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    grid-gap: 20px;
+  }
+  .recepies--wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    grid-gap: 20px;
+  }
+}
