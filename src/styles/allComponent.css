@@ -1,13 +1,13 @@
-.allFood {
+.allComponent {
   width: 100%;
 }
-.allFood--wrapper {
+.allComponent--wrapper {
   padding: 20px 160px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   grid-gap: 20px;
 }
-.allFood--search {
+.allComponent--search {
   margin: 20px 0;
   padding: 20px 160px;
 }
