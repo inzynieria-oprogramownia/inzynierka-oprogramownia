@@ -1,13 +1,7 @@
 import React from 'react'
 import Button from './Button'
+import Brick from './Brick'
 import '../../styles/recepieItem.css'
-
-const Brick = ({ text, icon }) => (
-  <div className="brick">
-    <img alt="icon" src={icon} />
-    <p>{text}</p>
-  </div>
-)
 
 const RecipeItem = ({ data }) => {
   const { img, title, person, time, kcal, option } = data
