@@ -21,5 +21,6 @@
   --mFontSize: 20px;
   --lFontSize: 26px;
   --xlFontSize: 36px;
+  --xxlFontSize:50px;
   --primaryShadow: drop-shadow(3px 4px 9px rgba(0, 0, 0, 0.25));
 }

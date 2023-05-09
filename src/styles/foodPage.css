@@ -1,0 +1,68 @@
+.food {
+  width: 100%;
+  font-family: var(--primaryFont);
+}
+.food--hero {
+  background-size: cover;
+  background-position: center;
+  height: 40vh;
+}
+.hero--wrapper {
+  font-size: var(--xxlFontSize);
+  text-align: center;
+  letter-spacing: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+.food--date {
+  color: var(--primaryColor);
+  margin-bottom: 20px;
+}
+.hero--title {
+  color: var(--primaryWhiteColor);
+}
+.food--title {
+  font-size: var(--xlFontSize);
+  letter-spacing: 1px;
+  margin-bottom: 35px;
+}
+.food--bottom {
+  display: grid;
+  grid-template-columns: 4fr 2fr;
+  padding: 40px 150px;
+  gap: 20px;
+}
+.food--info {
+  background-color: var(--primaryGreyColor);
+  padding: 12px 20px;
+}
+.food--ingredients {
+  margin-top: 30px;
+}
+.details--title {
+  margin-bottom: 10px;
+}
+.recepie {
+  font-size: var(--lFontSize);
+  margin-bottom: 20px;
+}
+.food--steps {
+  font-size: var(--mFontSize);
+}
+@media only screen and (max-width: 900px) {
+  .food--bottom {
+    padding: 10px 10px;
+  }
+}
+@media only screen and (max-width: 520px) {
+  .hero--title {
+    font-size: var(--xlFontSize);
+  }
+  .food--bottom {
+    grid-template-columns: 1fr;
+  }
+}
