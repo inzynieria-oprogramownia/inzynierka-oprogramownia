@@ -46,7 +46,7 @@ const ProfilePage = () => {
           <div className="panel--wrapper__top">
             {buttons.map((el, i) => {
               const isActive =
-                i === panel ? 'panel--button active' : 'panel--button'
+                i === panel ? 'panel--button button__active' : 'panel--button'
               return (
                 <Button
                   key={el}

@@ -31,7 +31,7 @@
   font-size: var(--xlFontSize);
   margin-bottom: 27px;
 }
-.active {
+.button__active {
   background-color: var(--primaryColor);
   color: var(--fullWhiteColor);
 }

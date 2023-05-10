@@ -21,7 +21,6 @@
   padding: 4.75em;
   background-color: var(--primaryWhiteColor);
   filter: var(--primaryShadow);
-  max-width: 40vh;
   width: 600px;
 
   display: flex;
