@@ -1,0 +1,79 @@
+.recipe-form {
+  font-family: var(--primaryFont);
+  font-size: var(--nFontSize);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 800px;
+  margin: 10px 0px 20px 0px;
+}
+
+.recipe-form form div:nth-child(odd) {
+  margin: 10px 0px;
+}
+
+.recipe-form form {
+  display: flex;
+  flex-direction: column;
+  padding: 0 20px;
+}
+
+.recipe-form form > div:not(.select) {
+  border: 1px solid hsl(0, 0%, 80%);
+}
+
+.recipe-form div input {
+  background-color: #fff;
+}
+
+.input--wrapper {
+  padding: 10px;
+  font-size: var(--nFontSize);
+  background-color: #fff;
+}
+
+.ingredients-box {
+  display: flex;
+  align-items: center;
+}
+
+.ingredients-box:nth-child(n+1) {
+  border-bottom: 1px solid hsl(0, 0%, 80%);
+}
+
+.recipe-form input[type="submit"] {
+  border: 1px solid hsl(0, 0%, 80%);
+}
+
+.delete-box button {
+  background-color: #fff;
+  padding: 5px;
+  font-size: var(--lFontSize);
+  cursor: pointer;
+}
+
+.recipe-form input[type="submit"] {
+  font-size: var(--lFontSize);
+}
+
+.add-btn, .recipe-form input[type="submit"] {
+  margin-top: 10px;
+  border: 1px solid hsl(0, 0%, 80%);
+  background-color: #fff;
+  padding: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.add-btn:hover, .recipe-form input[type="submit"]:hover {
+  background-color: #24BD30;
+  color: #fff;
+}
+
+.recipe-form form .css-t3ipsp-control {
+  box-shadow: 0 0  0 1px hsl(0, 0%, 80%);
+}
+
+.recipe-form form .css-t3ipsp-control:hover, .recipe-form form .css-t3ipsp-control:focus {
+  border-color: hsl(0, 0%, 80%);
+}
