@@ -11,3 +11,19 @@
   margin: 20px 0;
   padding: 20px 160px;
 }
+@media only screen and (max-width: 1000px) {
+  .allComponent--wrapper,
+  .allComponent--search {
+    padding: 20px 20px;
+  }
+}
+@media only screen and (max-width: 500px) {
+  .allComponent--wrapper,
+  .allComponent--search {
+    padding: 20px 0px;
+  }
+  .allComponent--wrapper{
+    display: flex;
+    flex-direction: column;
+  }
+}
