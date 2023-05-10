@@ -7,6 +7,7 @@ import FoodPage from './components/pages/FoodPage'
 import AllFoodPage from './components/pages/AllFoodPage'
 import AllBlogPage from './components/pages/AllBlogPage'
 import PremiumPage from './components/pages/PremiumPage'
+import ProfilePage from './components/pages/ProfilePage'
 
 const App = () => (
   <div className="App">
@@ -19,6 +20,7 @@ const App = () => (
         <Route path="/login" element={<LoginPage />} />
         <Route path="/food" element={<AllFoodPage />} />
         <Route path="/food/:id" element={<FoodPage />} />
+        <Route path="/profile" element={<ProfilePage />} />
       </Routes>
     </BrowserRouter>
   </div>
