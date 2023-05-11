@@ -12,7 +12,6 @@ h3 {
   position: relative;
   width: 100%;
   height: 400px;
-  background-image: url("../assets/blogEntry/entry.png");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -109,7 +108,7 @@ h3 {
 }
 
 .comment-form textarea {
-  width: 80%;
+  width: 100%;
   background-color: #E1E1E1;
   border: 1px solid #838383;
   padding: 10px;

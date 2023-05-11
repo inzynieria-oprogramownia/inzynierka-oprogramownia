@@ -15,7 +15,11 @@ const CommentForm = () => {
 
   const handleChange = (e) => {
     setComment(e.target.value)
-    setIsEmpty(!isEmpty)
+    if (e.target.value) {
+      setIsEmpty(false)
+    } else {
+      setIsEmpty(true)
+    }
   }
 
   return (
