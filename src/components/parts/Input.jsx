@@ -2,7 +2,7 @@
 import React, { useState, useRef } from 'react'
 import '../../styles/input.css'
 
-const Input = ({ label, id, ...rest }) => {
+const Input = ({ label, type, className, id, ...rest }) => {
   const [isFocused, setIsFocused] = useState(false)
   const inputRef = useRef(null)
 
@@ -15,10 +15,13 @@ const Input = ({ label, id, ...rest }) => {
       setIsFocused(false)
     }
   }
-  const labelClass = isFocused ? 'hidden' : 'input--label'
-
+  const labelClass = isFocused && type !== 'radio' ? 'hidden' : 'input--label'
+  const inputType = type || 'text'
+  const wrapperClass = className
+    ? `${className} input--wrapper`
+    : 'input--wrapper'
   return (
-    <div className="input--wrapper">
+    <div className={wrapperClass}>
       <label className={labelClass} htmlFor={id}>
         {label}
       </label>
@@ -27,7 +30,7 @@ const Input = ({ label, id, ...rest }) => {
         onFocus={handleFocus}
         onBlur={handleBlur}
         className="input"
-        type="text"
+        type={inputType}
         id={id}
         {...rest}
       />

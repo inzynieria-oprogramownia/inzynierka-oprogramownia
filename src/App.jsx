@@ -9,6 +9,7 @@ import AllBlogPage from './components/pages/AllBlogPage'
 import PremiumPage from './components/pages/PremiumPage'
 import ProfilePage from './components/pages/ProfilePage'
 import WaterReminder from './components/parts/WaterReminder'
+import PlanPage from './components/pages/PlanPage'
 
 const App = () => (
   <div className="App">
@@ -23,6 +24,7 @@ const App = () => (
         <Route path="/food" element={<AllFoodPage />} />
         <Route path="/food/:id" element={<FoodPage />} />
         <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/plan" element={<PlanPage />} />
       </Routes>
     </BrowserRouter>
   </div>

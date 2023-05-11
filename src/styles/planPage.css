@@ -1,0 +1,150 @@
+.plan {
+  width: 100%;
+  margin-top: 70px;
+  font-family: var(--primaryFont);
+}
+.paid {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 0 150px;
+  background-color: #f0ede5;
+  padding: 45px;
+}
+.paid--title {
+  font-size: var(--xlFontSize);
+  margin-bottom: 60px;
+}
+.option--wrapper {
+  padding: 20px;
+  width: 100%;
+  background-color: var(--primaryWhiteColor);
+}
+.cards--wrapper {
+  display: grid;
+  gap: 10%;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  margin-bottom: 50px;
+}
+.paid--card {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: var(--primaryColor);
+  border-radius: 15px;
+}
+.card--title {
+  font-size: var(--xlFontSize);
+  margin: 27px 0;
+}
+.option--radio {
+  background-color: transparent;
+}
+.option--row {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 20px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.option--row:first-child {
+  border-bottom: 1px solid black;
+}
+.price--wrapper > p:first-child {
+  font-weight: bold;
+  font-size: var(--lFontSize);
+}
+.bonus {
+  border: 1px solid black;
+}
+.paid--bottom {
+  padding: 30px 60px;
+}
+.bonus--wrapper {
+  width: 100%;
+  margin: 40px 0;
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  align-items: center;
+}
+.bonus--button,
+.paid--button {
+  padding: 14px;
+}
+.paid--button {
+  position: absolute;
+  bottom: -30px;
+}
+.free {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 90px 150px 50px 150px;
+}
+.free--panel {
+  -webkit-box-shadow: 0px 4px 7px 0px rgba(219, 220, 233, 1);
+  -moz-box-shadow: 0px 4px 7px 0px rgba(219, 220, 233, 1);
+  box-shadow: 0px 4px 7px 0px rgba(219, 220, 233, 1);
+}
+.free--heading {
+  font-size: var(--xlFontSize);
+  text-align: center;
+  padding: 50px 0 0 0;
+}
+.free--wrapper {
+  width: 100%;
+  padding: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.free--wrapper img {
+  width: 40%;
+}
+.free--wrapper p {
+  font-size: var(--mFontSize);
+  max-width: 40%;
+}
+@media only screen and (max-width: 1150px) {
+  .paid,
+  .free {
+    margin: 70px 10px;
+  }
+  .free--panel {
+    width: 100%;
+  }
+}
+@media only screen and (max-width: 800px) {
+  .free--wrapper {
+    flex-direction: column;
+  }
+  .free--wrapper p {
+    max-width: 100%;
+  }
+  .bonus--wrapper {
+    margin-top: 90px;
+    flex-direction: column;
+  }
+}
+@media only screen and (max-width: 375px) {
+  .paid {
+    padding: 10px 0 0 0;
+  }
+  .free--wrapper img {
+    width: 100%;
+  }
+  .option--row {
+    grid-template-columns: unset;
+    gap: 0;
+  }
+  .cards--wrapper {
+    grid-template-columns: unset;
+  }
+}
