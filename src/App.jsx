@@ -8,9 +8,11 @@ import AllFoodPage from './components/pages/AllFoodPage'
 import AllBlogPage from './components/pages/AllBlogPage'
 import PremiumPage from './components/pages/PremiumPage'
 import ProfilePage from './components/pages/ProfilePage'
+import WaterReminder from './components/parts/WaterReminder'
 
 const App = () => (
   <div className="App">
+    <WaterReminder />
     <BrowserRouter>
       <Routes>
         <Route index element={<WelcomePage />} />
