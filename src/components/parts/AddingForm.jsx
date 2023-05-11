@@ -91,7 +91,6 @@ const AddingForm = ({ type }) => {
   const handleFormSubmit = (event) => {
     event.preventDefault()
     // formData
-    console.log(formData)
   }
   return (
     <div className="addingForm">
