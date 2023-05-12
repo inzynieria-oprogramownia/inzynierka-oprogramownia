@@ -1,9 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit'
-import exampleReducer from './slices/example'
+import personReducer from './slices/user'
+import postReducer from './slices/post'
+import recipeReducer from './slices/recipe'
 
 const store = configureStore({
   reducer: {
-    example: exampleReducer,
+    person: personReducer,
+    post: postReducer,
+    recipe: recipeReducer,
   },
 })
 export default store
