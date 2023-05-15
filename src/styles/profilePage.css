@@ -38,6 +38,12 @@
 .weight--title {
   font-size: var(--xlFontSize);
 }
+
+.allComponent--search input {
+  padding: 10px;
+  border: 1px solid hsl(0, 0%, 80%);
+}
+
 @media only screen and (max-width: 1000px) {
   .panel--wrapper__top {
     grid-template-columns: repeat(2, 1fr);

@@ -1,9 +1,18 @@
 import React, { useRef } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 import { NavLink } from 'react-router-dom'
+import { setUserData, initialState } from '../../redux/slices/user'
+// import useUserData from '../../hooks/useUserData'
 import '../../styles/nav.css'
 
 const Nav = () => {
   const navRef = useRef()
+  const isLoggedIn = useSelector((state) => state.person.name)
+
+  const handleClick = () => {
+    const dispatch = useDispatch()
+    dispatch(setUserData(initialState))
+  }
 
   const handleNavBarClick = () => {
     navRef.current.classList.toggle('mobile-nav')
@@ -22,9 +31,15 @@ const Nav = () => {
         <NavLink className="nav-link" to="/blog">
           Blog
         </NavLink>
-        <NavLink className="nav-link" to="/login">
-          Zaloguj
-        </NavLink>
+        {isLoggedIn ? (
+          <NavLink className="nav-link" to="/" onClick={handleClick}>
+            Wyloguj
+          </NavLink>
+        ) : (
+          <NavLink className="nav-link" to="/login">
+            Zaloguj
+          </NavLink>
+        )}
       </div>
       <button type="button" className="nav-btn" onClick={handleNavBarClick}>
         <i className="fa-solid fa-bars" />
