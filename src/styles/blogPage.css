@@ -29,6 +29,7 @@
   border-radius: 4px;
   padding: 12px 24px;
   align-self: flex-end;
+  margin-left: 10px;
 }
 .fitatuBlog--button:hover {
   color: var(--primaryWhiteColor);

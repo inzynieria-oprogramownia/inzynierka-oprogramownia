@@ -117,7 +117,7 @@ const AddingForm = ({ type }) => {
         </div>
         {type === 'recipe' ? (
           <>
-            <div>
+            <div className="form-textarea">
               <div className="recipe">
                 <label htmlFor="recipe">Przepis (podaj kolejne kroki)</label>
               </div>

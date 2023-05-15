@@ -8,6 +8,10 @@
   margin: 10px 0px 20px 0px;
 }
 
+form > div:not(.select) {
+  background-color: #fff;
+}
+
 .addingForm form div:nth-child(odd) {
   margin: 10px 0px;
 }
@@ -31,7 +35,7 @@
   border: 1px solid hsl(0, 0%, 80%);
 }
 
-.addingForm div input {
+.addingForm div input, .form-textarea {
   background-color: #fff;
 }
 
@@ -86,3 +90,5 @@
 .addingForm form .css-t3ipsp-control:hover, .addingForm form .css-t3ipsp-control:focus {
   border-color: hsl(0, 0%, 80%);
 }
+
+body{ min-height: 100vh; margin:0; }
