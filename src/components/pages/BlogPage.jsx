@@ -54,14 +54,24 @@ const BlogPage = () => {
             <PostItem data={PostItemMockData} />
             <PostItem data={PostItemMockData} />
           </div>
-          <Button
-            className="fitatuBlog--button"
-            onClick={() => {
-              handleClick('/blog/all')
-            }}
-          >
-            <p>Wszystkie wpisy</p>
-          </Button>
+          <div className="recepies--wrapper__buttons">
+            <Button
+              className="fitatuBlog--button"
+              onClick={() => {
+                handleClick('/addPost')
+              }}
+            >
+              <p>Dodaj wpis</p>
+            </Button>
+            <Button
+              className="fitatuBlog--button"
+              onClick={() => {
+                handleClick('/blog/all')
+              }}
+            >
+              <p>Wszystkie wpisy</p>
+            </Button>
+          </div>
         </section>
         <div className="add">GORACE OFERTY W TWOJEJ OKOLICY HIT!!!</div>
         <section className="recepies">
@@ -77,8 +87,7 @@ const BlogPage = () => {
             <Button
               className="recepies--button"
               onClick={() => {
-                handleClick('')
-                // dodac strone do dodania przepisu
+                handleClick('/addRecipe')
               }}
             >
               <p>Dodaj przepis</p>

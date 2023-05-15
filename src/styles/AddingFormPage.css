@@ -1,0 +1,51 @@
+.addingFormPage {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  max-width: 1440px;
+  min-height: 100vh;
+  margin: 0 auto;
+  align-items: center;
+}
+
+.addingFormPage img {
+  max-width: 400px;
+  z-index: -1;
+  position: absolute;
+}
+
+.addingFormPage img:nth-child(2) {
+  top: 50%;
+  left: 0%;
+}
+
+.addingFormPage img:nth-child(3) {
+  top: 10%;
+  right: 0%;
+}
+
+.addingForm {
+  padding: 20px 30px 30px 30px;
+  background-color: #fff;
+}
+
+.addingForm h2 {
+  font-size: var(--xlFontSize);
+  text-align: center;
+  margin: 20px 0px;
+}
+
+.addingForm p {
+  font-size: var(--lFontSize);
+}
+
+@media only screen and (max-width: 768px) {
+  .addingFormPage img {
+    display: none;
+  }
+
+  .addingForm {
+    padding: 0px;
+  }
+}

@@ -11,6 +11,8 @@ import WaterReminder from './components/parts/WaterReminder'
 import PlanPage from './components/pages/PlanPage'
 import Error404 from './components/pages/Error404'
 import BlogEntry from './components/pages/BlogEntry'
+import BlogPage from './components/pages/BlogPage'
+import AddingFormPage from './components/pages/AddingFormPage'
 import './styles/app.css'
 
 const App = () => (
@@ -20,6 +22,7 @@ const App = () => (
       <Routes>
         <Route index element={<WelcomePage />} />
         <Route path="/premium" element={<PremiumPage />} />
+        <Route path="/blog" element={<BlogPage />} />
         <Route path="/blog/:id" element={<BlogEntry />} />
         <Route path="/blog/all" element={<AllBlogPage />} />
         <Route path="/login" element={<LoginPage />} />
@@ -28,6 +31,8 @@ const App = () => (
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/plan" element={<PlanPage />} />
         <Route path="/404" element={<Error404 />} />
+        <Route path="/addRecipe" element={<AddingFormPage />} />
+        <Route path="/addPost" element={<AddingFormPage />} />
       </Routes>
     </BrowserRouter>
   </div>
