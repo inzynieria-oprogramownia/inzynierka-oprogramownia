@@ -112,6 +112,11 @@
   font-size: var(--mFontSize);
   max-width: 40%;
 }
+
+input[type='radio'] { 
+  transform: scale(2); 
+}
+
 @media only screen and (max-width: 1150px) {
   .paid,
   .free {

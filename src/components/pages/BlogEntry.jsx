@@ -66,14 +66,6 @@ const BlogEntry = () => {
             <p>{section.sec2}</p>
           </div>
         ))}
-        <div className="entry-links">
-          <h2>Zobacz koniecznie</h2>
-          <p>
-            <a href="#s">
-              Europejski Dzień Śniadania 24.04 - 10 pomysłów na zdrowe śniadanie
-            </a>
-          </p>
-        </div>
         <div className="entry-comment">
           <h2>Komentarze</h2>
           {comments.map((comment) => (

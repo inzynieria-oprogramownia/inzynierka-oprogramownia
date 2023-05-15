@@ -65,7 +65,7 @@ const PlanPage = () => (
           />
         </form>
         <div className="bonus--wrapper">
-          <Input label="Kod rabatowy" className="bonus" />
+          <Input placeholder="Kod rabatowy" className="bonus" />
           <Button className="bonus--button">
             <p>Aktywuj</p>
           </Button>
