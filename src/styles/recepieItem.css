@@ -9,7 +9,7 @@
   -moz-box-shadow: 0px 4px 7px 0px rgba(219, 220, 233, 1);
   box-shadow: 0px 4px 7px 0px rgba(219, 220, 233, 1);
 }
-.wrapper {
+.recipeItem--wrapper__outer {
   padding: 20px;
 }
 .recipeItem--image {

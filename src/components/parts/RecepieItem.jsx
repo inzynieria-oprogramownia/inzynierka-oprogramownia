@@ -8,7 +8,7 @@ const RecipeItem = ({ data }) => {
   return (
     <div className="recipeItem">
       <img className="recipeItem--image" src={img} alt={title} />
-      <div className="wrapper">
+      <div className="recipeItem--wrapper__outer">
         <p className="recipeItem--title">{title}</p>
         <div className="recipeItem--wrapper">
           <Brick icon="src\assets\person.svg" text={person} />

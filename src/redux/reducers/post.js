@@ -19,5 +19,5 @@ export const setData = (state, action) => {
   state.image = payload.image
   state.date = payload.date
   state.sections = payload.sections
-  state.commens = payload.commens
+  state.comments = payload.comments
 }
