@@ -2,9 +2,10 @@ import { createSlice } from '@reduxjs/toolkit'
 import {
   setTitle,
   setImg,
-  setDate,
+  setData,
   setSections,
   setComments,
+  setDate,
 } from '../reducers/post'
 
 const initialState = {
@@ -20,15 +21,16 @@ export const postSlice = createSlice({
   reducers: {
     setPostTitle: setTitle,
     setPostImg: setImg,
-    setPostDate: setDate,
+    setPostData: setData,
     setPostSections: setSections,
     setPostComments: setComments,
+    setPostDate: setDate,
   },
 })
 export const {
   setPostTitle,
   setPostImg,
-  setPostDate,
+  setPostData,
   setPostSections,
   setPostComments,
 } = postSlice.actions

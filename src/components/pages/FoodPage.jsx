@@ -1,22 +1,17 @@
 import React from 'react'
+import { useDispatch } from 'react-redux'
+import { useParams } from 'react-router-dom'
 import Brick from '../parts/Brick'
 import Page from '../parts/Page'
+import fetchRecipeData from '../../utils/fetchRecipeData'
+import useRecipeData from '../../hooks/useRecipeData'
 import '../../styles/foodPage.css'
 
 const FoodPage = () => {
-  const data = {
-    id: 200,
-    backgroundImage: '../src/assets/welcomePage/main.png',
-    title: 'Argentynski kaktus',
-    date: '10.10.2010',
-    description:
-      'Sposób przygotowania: 1. Ryż ugotuj według przepisu na opakowaniu 2. Cukinię i paprykę pokrój w kostkę, cebulę w plasterki 3. Na patelni duś warzywa przez 15 minut 4. Na tortilli połóż sałatę, ryż oraz warzywa, polej jogurtem i zwin 5. Tortilla pszenna 6. Mąkę wymieszaj z solą. Wlej gorącą wodę i wymieszaj 7. Następnie dodaj olej i wyrób ręką. Odstaw 8. Po około 10 minutach podziel ciasto na dwie części, uformuj kuleczki i rozwałkuj cienko (jeśli potrzeba podsyp mąką) 9. Smaż na suchej patelni około minuty z jednej i 30 sekund z drugiej strony',
-    time: '200min',
-    people: 2,
-    kcal: '200kcal',
-    option: 'redukcja',
-    ingredients: ['20 jaj', '1 kaktus', '20kg kartofli'],
-  }
+  const dispatch = useDispatch()
+  const id = useParams('id')
+  fetchRecipeData(dispatch, id)
+  const data = useRecipeData()
 
   return (
     <Page>

@@ -1,37 +1,35 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import Page from '../parts/Page'
 import Input from '../parts/Input'
 import Button from '../parts/Button'
 import BackgroundCircles from '../parts/BackgroundCircles'
-import { setUserData } from '../../redux/slices/user'
+import fetchUserData from '../../utils/fetchUserData'
 import '../../styles/loginPage.css'
 
-const data = {
-  name: 'jan',
-  password: 'kowalski',
-  email: 'test@test.com',
-  likedMeals: ['1', '2'],
-  createdMeals: ['1', '2'],
-  weight: [{ date: '12.12.2012', value: 80 }],
+const LoginForm = () => {
+  const navigateTo = useNavigate()
+  return (
+    <>
+      <Input label="Username" id="username" />
+      <Input label="Password" type="password" id="password" />
+      <Button type="submit" onClick={() => navigateTo('/profile')}>
+        <p>Zaloguj</p>
+      </Button>
+    </>
+  )
 }
-const LoginForm = () => (
-  <>
-    <Input label="Username" id="username" />
-    <Input label="Password" type="password" id="password" />
-    <Button type="submit">
-      <p>Zaloguj</p>
-    </Button>
-  </>
-)
 
 const CreateForm = () => {
-  const dispach = useDispatch()
+  const dispatch = useDispatch()
+
   const handle = (event) => {
     event.preventDefault()
-    dispach(setUserData(data))
+    fetchUserData(dispatch)
   }
+
   return (
     <>
       <Input label="Username" id="username" />

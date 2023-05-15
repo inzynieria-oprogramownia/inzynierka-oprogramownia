@@ -32,4 +32,5 @@ export const setData = (state, action) => {
   state.kcal = payload.kcal
   state.option = payload.option
   state.ingredients = payload.ingredients
+  state.people = payload.people
 }

@@ -4,9 +4,11 @@ import Page from '../parts/Page'
 import Button from '../parts/Button'
 import AllComponent from '../parts/AllComponent'
 import WeightChart from '../parts/WeightChart'
+import useUserData from '../../hooks/useUserData'
 import '../../styles/profilePage.css'
 
 const ProfilePage = () => {
+  const data = useUserData()
   const recepieItemData = {
     title: 'Wegetariańska tortilla zwarzywami i ryżem',
     img: '..\\src\\assets\\welcomePage\\main.png',
@@ -27,9 +29,7 @@ const ProfilePage = () => {
   const handleClick = (e) => {
     setPanel(e)
   }
-  const data = {
-    name: 'wojtek@test.com',
-  }
+
   const buttons = ['Wykresy', 'Twoje wpisy', 'Twoje przepisy', 'Ulubione dania']
 
   const panels = [
