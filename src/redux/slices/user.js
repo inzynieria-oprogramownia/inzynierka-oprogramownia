@@ -9,7 +9,7 @@ import {
   setWeight,
 } from '../reducers/user'
 
-const initialState = {
+export const initialState = {
   name: null,
   email: null,
   password: null,
