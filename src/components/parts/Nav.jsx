@@ -31,9 +31,14 @@ const Nav = () => {
           Blog
         </NavLink>
         {isLoggedIn ? (
-          <NavLink className="nav-link" to="/" onClick={handleClick}>
-            Wyloguj
-          </NavLink>
+          <>
+            <NavLink className="nav-link" to="/" onClick={handleClick}>
+              Wyloguj
+            </NavLink>
+            <NavLink className="nav-link" to="/profile">
+              Profil
+            </NavLink>
+          </>
         ) : (
           <NavLink className="nav-link" to="/login">
             Zaloguj

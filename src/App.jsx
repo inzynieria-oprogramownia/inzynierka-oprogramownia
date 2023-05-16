@@ -32,9 +32,9 @@ const App = () => (
         <Route path="/food/:id" element={<FoodPage />} />
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/plan" element={<PlanPage />} />
-        <Route path="/404" element={<Error404 />} />
         <Route path="/addRecipe" element={<AddingFormPage />} />
         <Route path="/addPost" element={<AddingFormPage />} />
+        <Route path="*" element={<Error404 />} />
       </Routes>
     </BrowserRouter>
   </div>
