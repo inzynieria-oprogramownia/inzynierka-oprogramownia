@@ -16,6 +16,9 @@ export const setCreatedMeals = (state, action) => {
 export const setWeight = (state, action) => {
   state.weight = action.payload
 }
+export const addWeight = (state, action) => {
+  state.weight.push(action.payload)
+}
 export const setData = (state, action) => {
   const { payload } = action
   state.name = payload.name

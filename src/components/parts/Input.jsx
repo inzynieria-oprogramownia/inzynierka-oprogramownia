@@ -2,7 +2,7 @@
 import React, { useState, useRef } from 'react'
 import '../../styles/input.css'
 
-const Input = ({ label, type, className, id, ...rest }) => {
+const Input = ({ onInputChange, label, type, className, id, ...rest }) => {
   const [isFocused, setIsFocused] = useState(false)
   const inputRef = useRef(null)
 
@@ -15,6 +15,10 @@ const Input = ({ label, type, className, id, ...rest }) => {
       setIsFocused(false)
     }
   }
+
+  const inputChangeHandler = onInputChange
+    ? () => onInputChange(inputRef.current.value)
+    : () => {}
   const labelClass = isFocused && type !== 'radio' ? 'hidden' : 'input--label'
   const inputType = type || 'text'
   const wrapperClass = className
@@ -30,6 +34,7 @@ const Input = ({ label, type, className, id, ...rest }) => {
         onFocus={handleFocus}
         onBlur={handleBlur}
         className="input"
+        onChange={inputChangeHandler}
         type={inputType}
         id={id}
         {...rest}
