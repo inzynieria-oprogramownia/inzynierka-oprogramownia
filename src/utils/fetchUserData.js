@@ -9,7 +9,10 @@ const responseData = {
     email: 'test@test.com',
     likedMeals: ['1', '2'],
     createdMeals: ['1', '2'],
-    weight: [{ date: '12.12.2012', value: 80 }],
+    weight: [
+      { day: '14.05.2023', value: 100 },
+      { day: '15.05.2023', value: 80 },
+    ],
   },
 }
 const fetchUserData = async (dispatch) => {

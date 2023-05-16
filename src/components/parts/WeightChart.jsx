@@ -1,5 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import React from 'react'
+import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
 import {
   LineChart,
   Line,
@@ -10,6 +11,11 @@ import {
   Legend,
   ResponsiveContainer,
 } from 'recharts'
+import Button from './Button'
+import useUserData from '../../hooks/useUserData'
+import Input from './Input'
+import { addUserWeight, setUserWeight } from '../../redux/slices/user'
+import getFormattedDate from '../../utils/date'
 
 const CustomLabel = ({ x, y, stroke, value }) => (
   <text x={x} y={y} dy={-4} fill={stroke} fontSize={10} textAnchor="middle">
@@ -25,46 +31,79 @@ const CustomizedAxisTick = ({ x, y, payload }) => (
 )
 
 const WeightChart = () => {
-  const data = [
-    { day: '10.10.2020', Waga: 45 },
-    { day: '11.10.2020', Waga: 50 },
-    { day: '12.10.2020', Waga: 60 },
-    { day: '13.10.2020', Waga: 32 },
-    { day: '14.10.2020', Waga: 15 },
-    { day: '15.10.2020', Waga: 40 },
-    { day: '16.10.2020', Waga: 70 },
-    { day: '17.10.2020', Waga: 90 },
-    { day: '18.10.2020', Waga: 100 },
-  ]
+  const [weight, setWeight] = useState(0)
+  const data = useUserData()
+  const dispatch = useDispatch()
+
+  const handleAddWeight = () => {
+    const currentDate = getFormattedDate()
+    const dates = data.weight.map((el) => el.day)
+    const weightData = data.weight.map((el) => {
+      if (el.day === currentDate) {
+        return { ...el, value: weight }
+      }
+      return el
+    })
+    const isDateInArr = dates.includes(currentDate)
+    if (!isDateInArr) {
+      const element = { day: currentDate, value: weight }
+      dispatch(addUserWeight(element))
+    }
+    if (isDateInArr) {
+      dispatch(setUserWeight(weightData))
+    }
+  }
+  const handleSetWeight = (value) => {
+    if (value < 200 && value >= 0) setWeight(value)
+  }
+
   return (
-    <ResponsiveContainer width="100%" height="100%">
-      <LineChart
-        margin={{
-          bottom: 225,
-          top: 70,
-          left: -20,
-        }}
-        data={data}
-      >
-        <CartesianGrid strokeDasharray="3 3" />
-        <XAxis
-          overlinePosition
-          dataKey="day"
-          height={20}
-          tick={<CustomizedAxisTick />}
+    <>
+      <div className="chart--wrapper">
+        <Button onClick={handleAddWeight} className="chart--button">
+          Add weight
+        </Button>
+        <Input
+          className="chart--input"
+          placeholder="weight"
+          max="200"
+          min="1"
+          type="number"
+          value={weight}
+          onInputChange={handleSetWeight}
         />
-        <YAxis />
-        <Tooltip />
-        <Legend verticalAlign="top" iconSize={30} height={36} />
-        <Line
-          type="monotone"
-          dataKey="Waga"
-          stroke="#a5cb54"
-          strokeWidth={3}
-          label={<CustomLabel />}
-        />
-      </LineChart>
-    </ResponsiveContainer>
+      </div>
+
+      <ResponsiveContainer width="100%" height="100%">
+        <LineChart
+          margin={{
+            bottom: 225,
+            top: 70,
+            left: -20,
+          }}
+          data={data.weight}
+        >
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis
+            overlinePosition
+            dataKey="day"
+            height={20}
+            padding={{ left: 30, right: 30 }}
+            tick={<CustomizedAxisTick />}
+          />
+          <YAxis />
+          <Tooltip />
+          <Legend verticalAlign="top" iconSize={30} height={36} />
+          <Line
+            type="monotone"
+            dataKey="value"
+            stroke="#a5cb54"
+            strokeWidth={3}
+            label={<CustomLabel />}
+          />
+        </LineChart>
+      </ResponsiveContainer>
+    </>
   )
 }
 export default WeightChart
