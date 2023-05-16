@@ -1,30 +1,30 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React from 'react'
-// import { useSelector, useDispatch } from 'react-redux'
-// import { setUserLikedMeals } from '../../redux/slices/user'
+import { useSelector, useDispatch } from 'react-redux'
+import { setUserLikedMeals, addUserLikedMeals } from '../../redux/slices/user'
 import Button from './Button'
 import Brick from './Brick'
 import '../../styles/recepieItem.css'
 
 const RecipeItem = ({ data }) => {
   const { img, title, person, time, kcal, option } = data
-  // const likedMeals = useSelector((state) => state.person.likeMeals)
-  // const dispatch = useDispatch()
+  const likedMeals = useSelector((state) => state.person.likeMeals)
+  const dispatch = useDispatch()
 
   const handleClick = (event) => {
     const iconElement = event.currentTarget
-    // const recipeId = iconElement.getAttribute('data-recipe-id')
+    const recipeId = iconElement.getAttribute('data-recipe-id')
     iconElement.classList.add('fa-bounce')
-    iconElement.style.color = 'red'
-
-    // if (likedMeals.includes(recipeId)) {
-    //   dispatch(setUserLikedMeals([]))
-    //   console.log('usuwam')
-    // } else {
-    //   dispatch(setUserLikedMeals([recipeId]))
-    //   console.log('dodaje')
-    // }
+    const { color } = iconElement.style
+    iconElement.style.color = color === 'red' ? 'black' : 'red'
+    const isMealLiked = likedMeals.includes(recipeId)
+    if (isMealLiked) {
+      const newLikedMeals = likedMeals.filter((id) => id !== recipeId)
+      dispatch(setUserLikedMeals(newLikedMeals))
+    } else {
+      dispatch(addUserLikedMeals(recipeId))
+    }
 
     setTimeout(() => {
       iconElement.classList.remove('fa-bounce')
