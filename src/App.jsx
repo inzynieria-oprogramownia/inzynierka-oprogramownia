@@ -13,6 +13,7 @@ import Error404 from './components/pages/Error404'
 import BlogEntry from './components/pages/BlogEntry'
 import BlogPage from './components/pages/BlogPage'
 import AddingFormPage from './components/pages/AddingFormPage'
+import PremiumFoodPage from './components/pages/PremiumFoodPage'
 import './styles/app.css'
 
 const App = () => (
@@ -22,6 +23,7 @@ const App = () => (
       <Routes>
         <Route index element={<WelcomePage />} />
         <Route path="/premium" element={<PremiumPage />} />
+        <Route path="/premium/food/:id" element={<PremiumFoodPage />} />
         <Route path="/blog" element={<BlogPage />} />
         <Route path="/blog/:id" element={<BlogEntry />} />
         <Route path="/blog/all" element={<AllBlogPage />} />

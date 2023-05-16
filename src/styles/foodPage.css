@@ -5,6 +5,7 @@
 .food--hero {
   background-size: cover;
   background-position: center;
+  background-repeat: no-repeat;
   height: 40vh;
 }
 .hero--wrapper {
@@ -35,6 +36,8 @@
   grid-template-columns: 4fr 2fr;
   padding: 40px 150px;
   gap: 20px;
+  max-width: 1440px;
+  margin: 0 auto;
 }
 .food--info {
   background-color: var(--primaryGreyColor);
@@ -52,6 +55,7 @@
 }
 .food--steps {
   font-size: var(--mFontSize);
+  white-space: pre-wrap;
 }
 @media only screen and (max-width: 900px) {
   .food--bottom {
