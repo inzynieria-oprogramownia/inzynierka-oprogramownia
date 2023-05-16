@@ -25,11 +25,12 @@ nav .nav-links {
   position: relative;
   z-index: 20;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
   width: 30%;
   max-width: 350px;
   font-family: var(--primaryFont);
+  font-size: var(--mFontSize);
 }
 
 .nav-link {

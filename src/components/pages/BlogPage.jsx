@@ -1,5 +1,6 @@
 /* eslint-disable no-useless-escape */
 import React from 'react'
+import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import Page from '../parts/Page'
 import Heading from '../parts/Heading'
@@ -30,6 +31,7 @@ const recepieItemData = {
 
 const BlogPage = () => {
   const navigate = useNavigate()
+  const isLoggedIn = useSelector((state) => state.person.name)
 
   const handleClick = (url) => {
     navigate(url)
@@ -55,14 +57,16 @@ const BlogPage = () => {
             <PostItem data={PostItemMockData} />
           </div>
           <div className="recepies--wrapper__buttons">
-            <Button
-              className="fitatuBlog--button"
-              onClick={() => {
-                handleClick('/addPost')
-              }}
-            >
-              <p>Dodaj wpis</p>
-            </Button>
+            {isLoggedIn ? (
+              <Button
+                className="fitatuBlog--button"
+                onClick={() => {
+                  handleClick('/addPost')
+                }}
+              >
+                <p>Dodaj wpis</p>
+              </Button>
+            ) : null}
             <Button
               className="fitatuBlog--button"
               onClick={() => {
@@ -84,14 +88,16 @@ const BlogPage = () => {
             <RecipeItem data={recepieItemData} />
           </div>
           <div className="recepies--wrapper__buttons">
-            <Button
-              className="recepies--button"
-              onClick={() => {
-                handleClick('/addRecipe')
-              }}
-            >
-              <p>Dodaj przepis</p>
-            </Button>
+            {isLoggedIn ? (
+              <Button
+                className="recepies--button"
+                onClick={() => {
+                  handleClick('/addRecipe')
+                }}
+              >
+                <p>Dodaj przepis</p>
+              </Button>
+            ) : null}
             <Button
               className="recepies--button"
               onClick={() => {

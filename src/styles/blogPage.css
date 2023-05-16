@@ -44,6 +44,7 @@
   font-size: clamp(16px, 4vw, 22px);
   color: white;
   width: 100%;
+  padding: 20px;
 }
 .recepies {
   width: 100%;
