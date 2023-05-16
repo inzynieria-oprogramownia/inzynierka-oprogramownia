@@ -9,6 +9,24 @@
   -moz-box-shadow: 0px 4px 7px 0px rgba(219, 220, 233, 1);
   box-shadow: 0px 4px 7px 0px rgba(219, 220, 233, 1);
 }
+
+.recipeItem--wrapper__outer {
+  position: relative;
+}
+
+.recipeItem--wrapper__outer i {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: var(--lFontSize);
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.recipeItem--wrapper__outer i:hover {
+  color: red;
+}
+
 .recipeItem--wrapper__outer {
   padding: 20px;
 }

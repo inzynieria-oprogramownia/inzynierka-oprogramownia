@@ -13,8 +13,8 @@ const LoginForm = () => {
   const navigateTo = useNavigate()
   return (
     <>
-      <Input label="Username" id="username" />
-      <Input label="Password" type="password" id="password" />
+      <Input placeholder="Username" id="username" />
+      <Input placeholder="Password" type="password" id="password" />
       <Button type="submit" onClick={() => navigateTo('/profile')}>
         <p>Zaloguj</p>
       </Button>
@@ -32,9 +32,9 @@ const CreateForm = () => {
 
   return (
     <>
-      <Input label="Username" id="username" />
+      <Input placeholder="Username" id="username" />
       <Input type="mail" label="Email" id="email" />
-      <Input label="Password" type="password" id="password" />
+      <Input placeholder="Password" type="password" id="password" />
       <Button type="submit" onClick={(e) => handle(e)}>
         <p>Stworz konto</p>
       </Button>
