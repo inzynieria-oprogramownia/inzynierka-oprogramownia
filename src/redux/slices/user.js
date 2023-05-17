@@ -12,12 +12,13 @@ import {
 } from '../reducers/user'
 
 export const initialState = {
-  name: null,
+  id: null,
+  login: null,
   email: null,
   password: null,
-  likeMeals: [],
-  createdMeals: [],
-  weight: [],
+  liked_meals: [],
+  created_meals: [],
+  user_weights: [],
 }
 export const personSlice = createSlice({
   name: 'person',
