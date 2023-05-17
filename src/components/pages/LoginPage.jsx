@@ -1,4 +1,7 @@
+/* eslint-disable operator-linebreak */
+/* eslint-disable implicit-arrow-linebreak */
 /* eslint-disable jsx-a11y/label-has-associated-control */
+import axios from 'axios'
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
@@ -8,33 +11,67 @@ import Button from '../parts/Button'
 import BackgroundCircles from '../parts/BackgroundCircles'
 import fetchUserData from '../../utils/fetchUserData'
 import '../../styles/loginPage.css'
+import useFetch from '../../hooks/useFetch'
 
-const LoginForm = () => {
-  const navigateTo = useNavigate()
+const LoginForm = ({ handleLogin }) => {
+  const [username, setUsername] = useState(null)
+  const [password, setPassword] = useState(null)
+
   return (
     <>
-      <Input placeholder="Username" id="username" />
-      <Input placeholder="Password" type="password" id="password" />
-      <Button type="submit" onClick={() => navigateTo('/profile')}>
+      <Input
+        onInputChange={(e) => setUsername(e)}
+        placeholder="Username"
+        id="username"
+      />
+      <Input
+        onInputChange={(e) => setPassword(e)}
+        placeholder="Password"
+        type="password"
+        id="password"
+      />
+      <Button
+        type="submit"
+        onClick={(e) => {
+          e.preventDefault()
+          handleLogin(username, password)
+        }}
+      >
         <p>Zaloguj</p>
       </Button>
     </>
   )
 }
 
-const CreateForm = () => {
-  const dispatch = useDispatch()
+const CreateForm = ({ handleCreateAccount }) => {
+  const [username, setUsername] = useState(null)
+  const [password, setPassword] = useState(null)
+  const [email, setEmai] = useState(null)
 
   const handle = (event) => {
     event.preventDefault()
-    fetchUserData(dispatch)
+    handleCreateAccount(username, password, email)
   }
 
   return (
     <>
-      <Input placeholder="Username" id="username" />
-      <Input type="mail" label="Email" id="email" />
-      <Input placeholder="Password" type="password" id="password" />
+      <Input
+        onInputChange={(e) => setUsername(e)}
+        placeholder="Username"
+        id="username"
+      />
+      <Input
+        onInputChange={(e) => setEmai(e)}
+        type="mail"
+        label="Email"
+        id="email"
+      />
+      <Input
+        onInputChange={(e) => setPassword(e)}
+        placeholder="Password"
+        type="password"
+        id="password"
+      />
       <Button type="submit" onClick={(e) => handle(e)}>
         <p>Stworz konto</p>
       </Button>
@@ -52,22 +89,57 @@ const Bottom = ({ onClick, pText, buttonText }) => (
 )
 
 const LoginPage = () => {
+  const dispatch = useDispatch()
+  const navigateTo = useNavigate()
+  // const [foundAccoutn, setFoundAccount] = useState(false)
   const [makeAccount, setMakeAccount] = useState(false)
-
+  const [data] = useFetch(
+    'http://localhost/api/api/users/getUsers.php',
+    makeAccount
+  )
+  const handleLogin = (username, password) => {
+    const user = data.find(
+      (item) => item.login === username && item.password === password
+    )
+    if (user) {
+      fetchUserData(dispatch, user.id)
+      navigateTo('/profile')
+    }
+  }
   const handleClick = () => {
     setMakeAccount(true)
   }
   const handleLoginClick = () => {
     setMakeAccount(false)
   }
+  const handleCreateAccount = (username, password, email) => {
+    const user = data.find(
+      (item) =>
+        item.login === username &&
+        item.password === password &&
+        item.email === email
+    )
+    if (!user) {
+      axios.post('http://localhost/api/api/users/addUser.php', {
+        login: username,
+        password,
+        email,
+      })
+    }
+  }
+
   const headingText = makeAccount ? 'Rejestracja' : 'Logowanie'
   return (
     <Page>
       <section className="login">
         <div className="login--panel">
           <h2 className="login--heading">{headingText}</h2>
-          <form action="login" className="login--form">
-            {makeAccount ? <CreateForm /> : <LoginForm />}
+          <form action="POST" className="login--form">
+            {makeAccount ? (
+              <CreateForm handleCreateAccount={handleCreateAccount} />
+            ) : (
+              <LoginForm handleLogin={handleLogin} />
+            )}
           </form>
           <div className="login--wrapper__botom">
             {makeAccount ? (

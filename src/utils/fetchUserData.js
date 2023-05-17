@@ -1,24 +1,15 @@
 /* eslint-disable import/no-extraneous-dependencies */
-// import axios from 'axios'
+import axios from 'axios'
 import { setUserData } from '../redux/slices/user'
 
-const responseData = {
-  data: {
-    name: 'jan',
-    password: 'kowalski',
-    email: 'test@test.com',
-    likedMeals: ['1', '2'],
-    createdMeals: ['1', '2'],
-    weight: [
-      { day: '14.05.2023', value: 100 },
-      { day: '15.05.2023', value: 80 },
-    ],
-  },
-}
-const fetchUserData = async (dispatch) => {
+const fetchUserData = async (dispatch, id) => {
+  console.log(id)
   try {
-    const response = responseData // await axios.get('www.pl.pl')
-    dispatch(setUserData(response.data))
+    const response = await axios.get(
+      `http://localhost/api/api/users/getUser.php?id=${id}`
+    )
+    console.log(response.data.data)
+    dispatch(setUserData(response.data.data))
   } catch (error) {
     console.error(error)
   }
