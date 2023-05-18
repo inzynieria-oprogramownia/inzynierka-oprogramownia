@@ -11,6 +11,7 @@ import {
   Legend,
   ResponsiveContainer,
 } from 'recharts'
+import axios from 'axios'
 import Button from './Button'
 import useUserData from '../../hooks/useUserData'
 import Input from './Input'
@@ -35,19 +36,24 @@ const WeightChart = () => {
   const data = useUserData()
   const dispatch = useDispatch()
 
-  const handleAddWeight = () => {
+  const handleAddWeight = (e) => {
+    e.preventDefault()
     const currentDate = getFormattedDate()
-    const dates = data.weight.map((el) => el.day)
-    const weightData = data.weight.map((el) => {
-      if (el.day === currentDate) {
-        return { ...el, value: weight }
+    const dates = data.user_weights.map((el) => el.date)
+    const weightData = data.user_weights.map((el) => {
+      if (el.date === currentDate) {
+        return { ...el, weight }
       }
       return el
     })
     const isDateInArr = dates.includes(currentDate)
     if (!isDateInArr) {
-      const element = { day: currentDate, value: weight }
+      const element = { date: currentDate, weight }
       dispatch(addUserWeight(element))
+      axios.post('http://localhost/api/api/users/weight/addWeight.php', {
+        userid: data.id,
+        ...element,
+      })
     }
     if (isDateInArr) {
       dispatch(setUserWeight(weightData))
@@ -60,9 +66,15 @@ const WeightChart = () => {
   return (
     <>
       <div className="chart--wrapper">
-        <Button onClick={handleAddWeight} className="chart--button">
-          Add weight
-        </Button>
+        <form action="POST">
+          <Button
+            type="submit"
+            onClick={(e) => handleAddWeight(e)}
+            className="chart--button"
+          >
+            Add weight
+          </Button>
+        </form>
         <Input
           className="chart--input"
           placeholder="weight"
@@ -81,12 +93,12 @@ const WeightChart = () => {
             top: 70,
             left: -20,
           }}
-          data={data.weight}
+          data={data.user_weights}
         >
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis
             overlinePosition
-            dataKey="day"
+            dataKey="date"
             height={20}
             padding={{ left: 30, right: 30 }}
             tick={<CustomizedAxisTick />}
@@ -96,7 +108,7 @@ const WeightChart = () => {
           <Legend verticalAlign="top" iconSize={30} height={36} />
           <Line
             type="monotone"
-            dataKey="value"
+            dataKey="weight"
             stroke="#a5cb54"
             strokeWidth={3}
             label={<CustomLabel />}
