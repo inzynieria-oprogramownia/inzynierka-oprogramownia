@@ -6,7 +6,7 @@ import '../../styles/nav.css'
 
 const Nav = () => {
   const navRef = useRef()
-  const isLoggedIn = useSelector((state) => state.person.name)
+  const isLoggedIn = useSelector((state) => state.person.login)
 
   const handleClick = () => {
     const dispatch = useDispatch()

@@ -1,6 +1,6 @@
 /* eslint-disable react/no-array-index-key */
 import React from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import Page from '../parts/Page'
 import CommentForm from '../parts/CommentForm'
@@ -9,7 +9,7 @@ import fetchBlogData from '../../utils/fetchBlogData'
 import usePostData from '../../hooks/usePostData'
 
 const BlogEntry = () => {
-  const isLogged = true
+  const isLoggedIn = useSelector((state) => state.person.login)
   const dispatch = useDispatch()
   const id = useParams()
   fetchBlogData(dispatch, id)
@@ -49,7 +49,7 @@ const BlogEntry = () => {
               <p className="comment">{comment.text}</p>
             </div>
           ))}
-          {isLogged ? (
+          {isLoggedIn ? (
             <CommentForm />
           ) : (
             <div>

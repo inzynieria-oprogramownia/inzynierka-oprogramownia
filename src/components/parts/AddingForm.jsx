@@ -3,8 +3,9 @@
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import Select from 'react-select'
 import Input from './Input'
@@ -12,6 +13,13 @@ import '../../styles/AddingForm.css'
 
 const AddingForm = ({ type }) => {
   const userID = useSelector((state) => state.person.id)
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    if (!userID) {
+      navigate('/login')
+    }
+  }, [])
 
   const [formData, setFormData] = useState({
     userID,
