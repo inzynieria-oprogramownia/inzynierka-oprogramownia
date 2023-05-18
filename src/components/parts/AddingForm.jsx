@@ -4,20 +4,25 @@
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState } from 'react'
+import { useSelector } from 'react-redux'
+import axios from 'axios'
 import Select from 'react-select'
 import Input from './Input'
 import '../../styles/AddingForm.css'
 
 const AddingForm = ({ type }) => {
+  const userID = useSelector((state) => state.person.id)
+
   const [formData, setFormData] = useState({
+    userID,
     title: '',
     image: '',
-    recipe: null,
-    personNumber: null,
-    timeToPrepare: null,
+    description: null,
+    people: null,
+    time: null,
     kcal: null,
-    diet: null,
-    sections: [{ sec1: '', sec2: '' }],
+    mealoption: null,
+    sections: [{ name: '', description: '' }],
   })
 
   const options = [
@@ -54,6 +59,38 @@ const AddingForm = ({ type }) => {
     }
   }
 
+  const handleAdd = (
+    title,
+    description,
+    sections,
+    image,
+    people,
+    time,
+    kcal,
+    mealoption
+  ) => {
+    if (type === 'recipe') {
+      axios.post('http://localhost/api/api/meal/addMeal.php', {
+        userID,
+        title,
+        description,
+        sections,
+        image,
+        people,
+        time,
+        kcal,
+        mealoption,
+      })
+    } else {
+      axios.post('http://localhost/api/api/users/blog/addPost.php', {
+        title,
+        image,
+        description,
+        sections,
+      })
+    }
+  }
+
   const handleInputChange = (event) => {
     const { name, value } = event.target
     setFormData((prevFormData) => ({
@@ -75,7 +112,7 @@ const AddingForm = ({ type }) => {
   const addSectionBox = () => {
     setFormData((prevFormData) => ({
       ...prevFormData,
-      sections: [...prevFormData.sections, { sec1: '', sec2: '' }],
+      sections: [...prevFormData.sections, { name: '', description: '' }],
     }))
   }
 
@@ -90,7 +127,16 @@ const AddingForm = ({ type }) => {
 
   const handleFormSubmit = (event) => {
     event.preventDefault()
-    // formData
+    handleAdd(
+      formData.title,
+      formData.description,
+      formData.sections,
+      formData.image,
+      formData.people,
+      formData.time,
+      formData.kcal,
+      formData.mealoption
+    )
   }
   return (
     <div className="addingForm">
@@ -119,11 +165,13 @@ const AddingForm = ({ type }) => {
           <>
             <div className="form-textarea">
               <div className="recipe">
-                <label htmlFor="recipe">Przepis (podaj kolejne kroki)</label>
+                <label htmlFor="description">
+                  Przepis (podaj kolejne kroki)
+                </label>
               </div>
               <textarea
-                name="recipe"
-                id="recipe"
+                name="description"
+                id="description"
                 cols="30"
                 rows="10"
                 onChange={handleInputChange}
@@ -133,8 +181,8 @@ const AddingForm = ({ type }) => {
             <div>
               <Input
                 label="Dla ilu osób"
-                id="personNumber"
-                name="personNumber"
+                id="people"
+                name="people"
                 type="number"
                 min="1"
                 onChange={handleInputChange}
@@ -143,8 +191,8 @@ const AddingForm = ({ type }) => {
             <div>
               <Input
                 label="Czas przygotowania w minutach"
-                id="timeToPrepare"
-                name="timeToPrepare"
+                id="time"
+                name="time"
                 type="number"
                 min="1"
                 onChange={handleInputChange}
@@ -167,7 +215,7 @@ const AddingForm = ({ type }) => {
                 onChange={(selectedOption) =>
                   setFormData((prevFormData) => ({
                     ...prevFormData,
-                    diet: selectedOption.value,
+                    mealoption: selectedOption.value,
                   }))
                 }
               />
@@ -180,16 +228,16 @@ const AddingForm = ({ type }) => {
             <div className="sections-box" key={index}>
               <Input
                 type="text"
-                name="sec1"
-                placeholder={text.section.sec1}
-                value={ingredient.sec1}
+                name="name"
+                placeholder={text.section.name}
+                value={ingredient.name}
                 onChange={(event) => handleSectionChange(index, event)}
               />
               <Input
                 type={text.section.type}
-                name="sec2"
-                placeholder={text.section.sec2}
-                value={ingredient.sec2}
+                name="description"
+                placeholder={text.section.description}
+                value={ingredient.description}
                 onChange={(event) => handleSectionChange(index, event)}
                 min="1"
               />
