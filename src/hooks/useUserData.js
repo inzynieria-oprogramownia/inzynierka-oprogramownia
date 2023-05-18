@@ -14,13 +14,13 @@ const useUserData = () => {
 
   useEffect(() => {
     if (
-      value.name === null &&
+      value.login === null &&
       value.email === null &&
       value.password === null
     ) {
       navigateTo('/login')
     }
-  }, [value, navigateTo])
+  }, [value])
 
   return value
 }

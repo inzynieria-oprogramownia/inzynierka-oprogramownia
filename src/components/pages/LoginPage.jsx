@@ -5,6 +5,7 @@ import axios from 'axios'
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
+import { ToastContainer, toast } from 'react-toastify'
 import Page from '../parts/Page'
 import Input from '../parts/Input'
 import Button from '../parts/Button'
@@ -12,6 +13,7 @@ import BackgroundCircles from '../parts/BackgroundCircles'
 import fetchUserData from '../../utils/fetchUserData'
 import '../../styles/loginPage.css'
 import useFetch from '../../hooks/useFetch'
+import { invalidDataLogin, accountCreated } from '../../mocks/popups'
 
 const LoginForm = ({ handleLogin }) => {
   const [username, setUsername] = useState(null)
@@ -89,10 +91,9 @@ const Bottom = ({ onClick, pText, buttonText }) => (
 )
 
 const LoginPage = () => {
+  const [makeAccount, setMakeAccount] = useState(false)
   const dispatch = useDispatch()
   const navigateTo = useNavigate()
-  // const [foundAccoutn, setFoundAccount] = useState(false)
-  const [makeAccount, setMakeAccount] = useState(false)
   const [data] = useFetch(
     'http://localhost/api/api/users/getUsers.php',
     makeAccount
@@ -102,8 +103,11 @@ const LoginPage = () => {
       (item) => item.login === username && item.password === password
     )
     if (user) {
-      fetchUserData(dispatch, user.id)
-      navigateTo('/profile')
+      fetchUserData(dispatch, user.id).then(() => {
+        navigateTo('/profile')
+      })
+    } else {
+      toast.error('Invalid data', { ...invalidDataLogin })
     }
   }
   const handleClick = () => {
@@ -125,12 +129,16 @@ const LoginPage = () => {
         password,
         email,
       })
+      toast.success('Account created!', { ...accountCreated })
+    } else {
+      toast.error('The data given is occupied', { ...invalidDataLogin })
     }
   }
 
   const headingText = makeAccount ? 'Rejestracja' : 'Logowanie'
   return (
     <Page>
+      <ToastContainer />
       <section className="login">
         <div className="login--panel">
           <h2 className="login--heading">{headingText}</h2>
