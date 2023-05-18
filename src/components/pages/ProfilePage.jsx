@@ -1,5 +1,7 @@
 /* eslint-disable operator-linebreak */
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import { useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 import Page from '../parts/Page'
 import Button from '../parts/Button'
 import AllComponent from '../parts/AllComponent'
@@ -8,6 +10,15 @@ import useUserData from '../../hooks/useUserData'
 import '../../styles/profilePage.css'
 
 const ProfilePage = () => {
+  const userID = useSelector((state) => state.person.id)
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    if (!userID) {
+      navigate('/login')
+    }
+  }, [])
+
   const data = useUserData()
   const recepieItemData = {
     title: 'Wegetariańska tortilla zwarzywami i ryżem',

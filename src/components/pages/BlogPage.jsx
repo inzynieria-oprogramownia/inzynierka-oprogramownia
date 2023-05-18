@@ -31,7 +31,7 @@ const recepieItemData = {
 
 const BlogPage = () => {
   const navigate = useNavigate()
-  const isLoggedIn = useSelector((state) => state.person.name)
+  const isLoggedIn = useSelector((state) => state.person.login)
 
   const handleClick = (url) => {
     navigate(url)
