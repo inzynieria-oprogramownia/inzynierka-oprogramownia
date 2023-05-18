@@ -7,7 +7,6 @@ const useFetch = (url, el) => {
   const [error, setError] = useState(null)
 
   useEffect(() => {
-    console.log('kurwa')
     setLoading(true)
     axios
       .get(url)
