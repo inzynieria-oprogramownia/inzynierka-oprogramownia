@@ -8,6 +8,7 @@ import AllComponent from '../parts/AllComponent'
 import WeightChart from '../parts/WeightChart'
 import useUserData from '../../hooks/useUserData'
 import '../../styles/profilePage.css'
+import useFetch from '../../hooks/useFetch'
 
 const ProfilePage = () => {
   const userID = useSelector((state) => state.person.id)
@@ -20,34 +21,27 @@ const ProfilePage = () => {
   }, [])
 
   const data = useUserData()
-  const recepieItemData = {
-    title: 'Wegetariańska tortilla zwarzywami i ryżem',
-    img: '..\\src\\assets\\welcomePage\\main.png',
-    person: 1,
-    time: '20min.',
-    kcal: '200kcal',
-    option: 'redukcja',
-  }
-  const postItemData = {
-    title: 'Piosenki opole mock 2020',
-    description:
-      'Wlazł kotek na płotek i mruga krótka to piosenka nie długa. Koziołek matołek stuka w stołek',
-    genre: ['test1', 'test2'],
-    img: '..\\src\\assets\\blogEntry\\entry.png',
-    date: '20 kwietnia 2020',
-  }
+  const [recepies] = useFetch(
+    `http://localhost/api/api/users/getCreatedMeals.php?userid=${data.id}`
+  )
+  const [posts] = useFetch(
+    `http://localhost/api/api/users/blog/getUsersPosts.php?userid=${data.id}`
+  )
+  const [likedMeals] = useFetch(
+    `http://localhost/api/api/users/getLikedMeals.php?userid=${data.id}`
+  )
   const [panel, setPanel] = useState(0)
   const handleClick = (e) => {
     setPanel(e)
   }
-
+  console.log(posts?.posts, 'hcujjjjj')
   const buttons = ['Wykresy', 'Twoje wpisy', 'Twoje przepisy', 'Ulubione dania']
 
   const panels = [
     <WeightChart className="weightChart" />,
-    <AllComponent data={postItemData} type="blog" />,
-    <AllComponent data={recepieItemData} />,
-    <AllComponent data={recepieItemData} />,
+    <AllComponent data={posts?.posts} type="blog" />,
+    <AllComponent data={recepies?.meals} />,
+    <AllComponent data={likedMeals?.meals} />,
   ]
   return (
     <Page>

@@ -7,31 +7,13 @@ import Button from './Button'
 import '../../styles/allComponent.css'
 
 const AllComponent = ({ data, type }) => {
-  const numbers = []
-
-  while (numbers.length < 50) {
-    const randomNumber = Math.floor(Math.random() * 50)
-    if (!numbers.includes(randomNumber)) {
-      numbers.push(randomNumber)
-    }
-  }
-
-  const handleTypeCheck = (el) => {
-    if (type === 'blog') {
-      return <PostItem key={el} data={data} />
-    }
-    return <RecipeItem key={el} data={data} />
-  }
-
   const navigate = useNavigate()
 
   const handleClick = (url) => {
     navigate(url)
     window.scrollTo(0, 0)
   }
-
-  handleTypeCheck()
-
+  const ComponentToRender = type === 'blog' ? PostItem : RecipeItem
   return (
     <section className="allComponent">
       <div className="allComponent--search">
@@ -57,7 +39,9 @@ const AllComponent = ({ data, type }) => {
         )}
       </div>
       <div className="allComponent--wrapper">
-        {numbers.map((el) => handleTypeCheck(el))}
+        {data?.map((el) => (
+          <ComponentToRender data={el} />
+        ))}
       </div>
     </section>
   )
