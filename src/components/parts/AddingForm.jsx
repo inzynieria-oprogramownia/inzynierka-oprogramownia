@@ -78,32 +78,57 @@ const AddingForm = ({ type }) => {
     mealoption
   ) => {
     if (type === 'recipe') {
-      axios.post('http://localhost/api/api/meal/addMeal.php', {
-        userID,
-        title,
-        description,
-        sections,
-        image,
-        people,
-        time,
-        kcal,
-        mealoption,
-      })
+      axios.post(
+        'http://localhost/api/api/meal/addMeal.php',
+        {
+          userID,
+          title,
+          description,
+          sections,
+          image,
+          people,
+          time,
+          kcal,
+          mealoption,
+        },
+        {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        }
+      )
     } else {
-      axios.post('http://localhost/api/api/users/blog/addPost.php', {
-        title,
-        image,
-        description,
-        sections,
-      })
+      axios.post(
+        'http://localhost/api/api/users/blog/addPost.php',
+        {
+          userID,
+          title,
+          image,
+          description,
+          sections,
+        },
+        {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        }
+      )
     }
   }
 
   const handleInputChange = (event) => {
     const { name, value } = event.target
+    console.log(event)
     setFormData((prevFormData) => ({
       ...prevFormData,
       [name]: value,
+    }))
+  }
+  const handleFileChange = (event) => {
+    const { name, files } = event.target
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [name]: files[0],
     }))
   }
 
@@ -135,6 +160,7 @@ const AddingForm = ({ type }) => {
 
   const handleFormSubmit = (event) => {
     event.preventDefault()
+    console.log(formData)
     handleAdd(
       formData.title,
       formData.description,
@@ -166,7 +192,7 @@ const AddingForm = ({ type }) => {
             id="image"
             name="image"
             type="file"
-            onChange={handleInputChange}
+            onChange={handleFileChange}
           />
         </div>
         {type === 'recipe' ? (
