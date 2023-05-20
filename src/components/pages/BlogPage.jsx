@@ -7,14 +7,16 @@ import Heading from '../parts/Heading'
 import PostItem from '../parts/PostItem'
 import Button from '../parts/Button'
 import RecipeItem from '../parts/RecepieItem'
-
 import '../../styles/blogPage.css'
 
 const PostItemMockData = {
   title: 'Piosenki opole mock 2020',
-  description:
-    'Wlazł kotek na płotek i mruga krótka to piosenka nie długa. Koziołek matołek stuka w stołek',
-  genre: ['test1', 'test2'],
+  sections: [
+    {
+      description:
+        'Wlazł kotek na płotek i mruga krótka to piosenka nie długa. Koziołek matołek stuka w stołek',
+    },
+  ],
   // eslint-disable-next-line prettier/prettier
   img: 'src\\assets\\welcomePage\\main.png',
   date: '20 kwietnia 2020',

@@ -24,13 +24,14 @@ export const setIngredients = (state, action) => {
 }
 export const setData = (state, action) => {
   const { payload } = action
-  state.backgroundImage = payload.backgroundImage
+
+  state.backgroundImage = payload.image
   state.title = payload.title
   state.date = payload.date
   state.description = payload.description
   state.time = payload.time
   state.kcal = payload.kcal
-  state.option = payload.option
+  state.option = payload.mealoption
   state.ingredients = payload.ingredients
   state.people = payload.people
 }

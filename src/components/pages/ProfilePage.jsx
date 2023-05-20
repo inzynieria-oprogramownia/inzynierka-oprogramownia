@@ -4,44 +4,36 @@ import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import Page from '../parts/Page'
 import Button from '../parts/Button'
-import AllComponent from '../parts/AllComponent'
 import WeightChart from '../parts/WeightChart'
 import useUserData from '../../hooks/useUserData'
 import '../../styles/profilePage.css'
-import useFetch from '../../hooks/useFetch'
+import AllRecepies from '../parts/AllRecepies'
+import AllPosts from '../parts/AllPosts'
+import AllLikedMeals from '../parts/AllLikedMeals'
 
 const ProfilePage = () => {
   const userID = useSelector((state) => state.person.id)
   const navigate = useNavigate()
+  const [panel, setPanel] = useState(0)
 
   useEffect(() => {
     if (!userID) {
       navigate('/login')
     }
   }, [])
-
   const data = useUserData()
-  const [recepies] = useFetch(
-    `http://localhost/api/api/users/getCreatedMeals.php?userid=${data.id}`
-  )
-  const [posts] = useFetch(
-    `http://localhost/api/api/users/blog/getUsersPosts.php?userid=${data.id}`
-  )
-  const [likedMeals] = useFetch(
-    `http://localhost/api/api/users/getLikedMeals.php?userid=${data.id}`
-  )
-  const [panel, setPanel] = useState(0)
+
   const handleClick = (e) => {
     setPanel(e)
   }
-  console.log(posts?.posts, 'hcujjjjj')
+
   const buttons = ['Wykresy', 'Twoje wpisy', 'Twoje przepisy', 'Ulubione dania']
 
   const panels = [
     <WeightChart className="weightChart" />,
-    <AllComponent data={posts?.posts} type="blog" />,
-    <AllComponent data={recepies?.meals} />,
-    <AllComponent data={likedMeals?.meals} />,
+    <AllPosts id={data.id} panel={panel} />,
+    <AllRecepies id={data.id} panel={panel} />,
+    <AllLikedMeals id={data.id} panel={panel} />,
   ]
   return (
     <Page>
