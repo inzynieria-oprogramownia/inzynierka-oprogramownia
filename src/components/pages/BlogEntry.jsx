@@ -1,25 +1,23 @@
+/* eslint-disable implicit-arrow-linebreak */
 /* eslint-disable react/no-array-index-key */
 import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { useParams } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 import Page from '../parts/Page'
 import CommentForm from '../parts/CommentForm'
 import '../../styles/blogEntry.css'
-import fetchBlogData from '../../utils/fetchBlogData'
+
 import usePostData from '../../hooks/usePostData'
 
 const BlogEntry = () => {
   const isLoggedIn = useSelector((state) => state.person.login)
-  const dispatch = useDispatch()
-  const id = useParams()
-  fetchBlogData(dispatch, id)
   const data = usePostData()
 
+  const imageToRender = `http://localhost/api/api/users/blog/${data.image}`
   return (
     <Page>
       <header
         className="entry-header"
-        style={{ backgroundImage: `url(${data.image})` }}
+        style={{ backgroundImage: `url(${imageToRender})` }}
       >
         <div>
           <h1>{data.title}</h1>
@@ -31,24 +29,27 @@ const BlogEntry = () => {
           <h2>{data.title}</h2>
         </div>
         <div className="entry-image">
-          <img src={data.image} alt="entry" />
+          <img src={imageToRender} alt="entry" />
         </div>
         {data.sections.map((section, index) => (
           <div className="entry-box" key={index}>
-            <h2>{section.sec1}</h2>
-            <p>{section.sec2}</p>
+            <h2>{section.name}</h2>
+            <p>{section.description}</p>
           </div>
         ))}
         <div className="entry-comment">
           <h2>Komentarze</h2>
-          {data.comments.map((comment) => (
-            <div className="comment-box" key={comment.id}>
-              <h3>
-                <span className="nick">{comment.nick}</span>
-              </h3>
-              <p className="comment">{comment.text}</p>
-            </div>
-          ))}
+          {data.comments.map(
+            (comment, i) =>
+              comment.login && (
+                <div className="comment-box" key={i}>
+                  <h3>
+                    <span className="nick">{comment.login}</span>
+                  </h3>
+                  <p className="comment">{comment.comment}</p>
+                </div>
+              )
+          )}
           {isLoggedIn ? (
             <CommentForm />
           ) : (

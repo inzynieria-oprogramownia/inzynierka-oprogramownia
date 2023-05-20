@@ -78,47 +78,54 @@ const AddingForm = ({ type }) => {
     mealoption
   ) => {
     if (type === 'recipe') {
-      axios.post(
-        'http://localhost/api/api/meal/addMeal.php',
-        {
-          userID,
-          title,
-          description,
-          sections,
-          image,
-          people,
-          time,
-          kcal,
-          mealoption,
-        },
-        {
-          headers: {
-            'Content-Type': 'multipart/form-data',
+      axios
+        .post(
+          'http://localhost/api/api/meal/addMeal.php',
+          {
+            userID,
+            title,
+            description,
+            sections,
+            image,
+            people,
+            time,
+            kcal,
+            mealoption,
           },
-        }
-      )
+          {
+            headers: {
+              'Content-Type': 'multipart/form-data',
+            },
+          }
+        )
+        .then(() => {
+          navigate('/profile')
+        })
     } else {
-      axios.post(
-        'http://localhost/api/api/users/blog/addPost.php',
-        {
-          userID,
-          title,
-          image,
-          description,
-          sections,
-        },
-        {
-          headers: {
-            'Content-Type': 'multipart/form-data',
+      axios
+        .post(
+          'http://localhost/api/api/users/blog/addPost.php',
+          {
+            userID,
+            title,
+            image,
+            description,
+            sections,
           },
-        }
-      )
+          {
+            headers: {
+              'Content-Type': 'multipart/form-data',
+            },
+          }
+        )
+        .then(() => {
+          navigate('/profile')
+        })
     }
   }
 
   const handleInputChange = (event) => {
     const { name, value } = event.target
-    console.log(event)
     setFormData((prevFormData) => ({
       ...prevFormData,
       [name]: value,
@@ -160,7 +167,6 @@ const AddingForm = ({ type }) => {
 
   const handleFormSubmit = (event) => {
     event.preventDefault()
-    console.log(formData)
     handleAdd(
       formData.title,
       formData.description,

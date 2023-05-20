@@ -1,23 +1,17 @@
 import React from 'react'
-import { useDispatch } from 'react-redux'
-import { useParams } from 'react-router-dom'
 import Brick from '../parts/Brick'
 import Page from '../parts/Page'
-import fetchRecipeData from '../../utils/fetchRecipeData'
 import useRecipeData from '../../hooks/useRecipeData'
 import '../../styles/foodPage.css'
 
 const FoodPage = () => {
-  const dispatch = useDispatch()
-  const id = useParams('id')
-  fetchRecipeData(dispatch, id)
   const data = useRecipeData()
-
+  const imageToRender = `http://localhost/api/api/meal/${data.backgroundImage}`
   return (
     <Page>
       <section className="food">
         <section
-          style={{ backgroundImage: `url(${data.backgroundImage})` }}
+          style={{ backgroundImage: `url(${imageToRender})` }}
           className="food--hero"
         >
           <div className="hero--wrapper">
@@ -43,10 +37,10 @@ const FoodPage = () => {
             </section>
             <section className="food--ingredients">
               <p className="details--title">Składniki</p>
-              {data.ingredients.map((ingredient) => (
+              {data.ingredients?.map((ingredient) => (
                 <Brick
-                  key={ingredient}
-                  text={ingredient}
+                  key={JSON.stringify(ingredient)}
+                  text={`${ingredient.name} ${ingredient.weight}`}
                   icon="..\src\assets\plus.svg"
                 />
               ))}

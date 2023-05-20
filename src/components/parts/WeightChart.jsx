@@ -103,7 +103,7 @@ const WeightChart = () => {
             padding={{ left: 30, right: 30 }}
             tick={<CustomizedAxisTick />}
           />
-          <YAxis />
+          <YAxis domain={[0, 200]} />
           <Tooltip />
           <Legend verticalAlign="top" iconSize={30} height={36} />
           <Line
