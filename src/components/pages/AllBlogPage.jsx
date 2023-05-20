@@ -1,20 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
+import axios from 'axios'
 import Page from '../parts/Page'
 import AllComponent from '../parts/AllComponent'
 
 const AllBlogPage = () => {
-  const postItemData = {
-    title: 'Piosenki opole mock 2020',
-    description:
-      'Wlazł kotek na płotek i mruga krótka to piosenka nie długa. Koziołek matołek stuka w stołek',
-    genre: ['test1', 'test2'],
-    img: '..\\src\\assets\\blogEntry\\entry.png',
-    date: '20 kwietnia 2020',
-  }
-
+  const [state, setState] = useState([])
+  axios
+    .get('http://localhost/api/api/users/blog/getPosts.php')
+    .then((response) => {
+      setState(response.data.data.posts)
+    })
   return (
     <Page>
-      <AllComponent data={postItemData} type="blog" />
+      <AllComponent render={state} type="blog" />
     </Page>
   )
 }
