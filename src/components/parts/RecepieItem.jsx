@@ -72,10 +72,10 @@ const RecipeItem = ({ data, deleteElement }) => {
         />
         <p className="recipeItem--title">{title}</p>
         <div className="recipeItem--wrapper">
-          <Brick icon="src\assets\person.svg" text={people} />
-          <Brick icon="src\assets\time.svg" text={time} />
-          <Brick icon="src\assets\kcal.svg" text={`${kcal} kcal`} />
-          <Brick icon="src\assets\option.svg" text={mealoption} />
+          <Brick icon="..\src\assets\person.svg" text={people} />
+          <Brick icon="..\src\assets\time.svg" text={time} />
+          <Brick icon="..\src\assets\kcal.svg" text={`${kcal} kcal`} />
+          <Brick icon="..\src\assets\option.svg" text={mealoption} />
         </div>
         <Button onClick={handleNavigate} className="recipeItem--button">
           <p>Poznaj szczegóły</p>

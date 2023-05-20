@@ -1,15 +1,27 @@
 import React, { useState } from 'react'
+import axios from 'axios'
+import { useDispatch, useSelector } from 'react-redux'
+import { useParams } from 'react-router-dom'
+import { addPostComment } from '../../redux/slices/post'
 
 const CommentForm = () => {
+  const { id: userID, login } = useSelector((state) => state.person)
+  // const { comments } = useSelector((state) => state.post)
+  const { id } = useParams()
+  const dispatch = useDispatch()
   const [comment, setComment] = useState('')
   const [isEmpty, setIsEmpty] = useState(true)
 
   const handleSubmit = (e) => {
     e.preventDefault()
     if (comment.trim()) {
-      // wysłanie komentarza
+      axios.post(
+        'http://localhost/api/api/users/blog/comments/addComment.php',
+        { userID, postID: id, comment }
+      )
+      dispatch(addPostComment({ login, comment }))
     } else {
-      // disable input
+      console.log('nie wyslalem')
     }
   }
 

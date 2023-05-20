@@ -1,6 +1,6 @@
 /* eslint-disable implicit-arrow-linebreak */
 /* eslint-disable react/no-array-index-key */
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import Page from '../parts/Page'
 import CommentForm from '../parts/CommentForm'
@@ -9,9 +9,12 @@ import '../../styles/blogEntry.css'
 import usePostData from '../../hooks/usePostData'
 
 const BlogEntry = () => {
+  const [comments, setComments] = useState([])
   const isLoggedIn = useSelector((state) => state.person.login)
   const data = usePostData()
-
+  useEffect(() => {
+    setComments(data.comments)
+  }, [data.comments])
   const imageToRender = `http://localhost/api/api/users/blog/${data.image}`
   return (
     <Page>
@@ -31,7 +34,7 @@ const BlogEntry = () => {
         <div className="entry-image">
           <img src={imageToRender} alt="entry" />
         </div>
-        {data.sections.map((section, index) => (
+        {comments.map((section, index) => (
           <div className="entry-box" key={index}>
             <h2>{section.name}</h2>
             <p>{section.description}</p>

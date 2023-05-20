@@ -13,6 +13,9 @@ export const setSections = (state, action) => {
 export const setComments = (state, action) => {
   state.comments = action.payload
 }
+export const addComment = (state, action) => {
+  state.comments.push(action.payload)
+}
 export const setData = (state, action) => {
   const { payload } = action
   state.title = payload.title

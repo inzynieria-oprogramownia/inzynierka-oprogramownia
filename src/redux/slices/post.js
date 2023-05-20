@@ -6,6 +6,7 @@ import {
   setSections,
   setComments,
   setDate,
+  addComment,
 } from '../reducers/post'
 
 const initialState = {
@@ -25,6 +26,7 @@ export const postSlice = createSlice({
     setPostSections: setSections,
     setPostComments: setComments,
     setPostDate: setDate,
+    addPostComment: addComment,
   },
 })
 export const {
@@ -33,5 +35,6 @@ export const {
   setPostData,
   setPostSections,
   setPostComments,
+  addPostComment,
 } = postSlice.actions
 export default postSlice.reducer

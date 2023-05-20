@@ -16,7 +16,6 @@ const AllComponent = ({ render, type }) => {
   useEffect(() => {
     setData(render)
   }, [render])
-
   const deleteElementHandler = (id) => {
     const newData = data.filter((el) => el.id !== id)
     setData(newData)

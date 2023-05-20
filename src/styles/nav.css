@@ -28,7 +28,7 @@ nav .nav-links {
   justify-content: space-between;
   align-items: center;
   width: 30%;
-  max-width: 350px;
+  max-width: 650px;
   font-family: var(--primaryFont);
   font-size: var(--mFontSize);
 }
