@@ -23,7 +23,10 @@ const Nav = () => {
           NutriPlan
         </NavLink>
       </div>
-      <div ref={navRef} className="nav-links">
+      <div
+        ref={navRef}
+        className={`nav-links ${isLoggedIn ? '' : 'nav-links--logged-out'}`}
+      >
         <NavLink className="nav-link" to="/premium">
           Premium
         </NavLink>
