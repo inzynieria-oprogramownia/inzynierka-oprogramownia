@@ -33,6 +33,10 @@ nav .nav-links {
   font-size: var(--mFontSize);
 }
 
+nav .nav-links--logged-out {
+  width: 15%;
+}
+
 .nav-link {
   color: var(--customBlackColor);
   text-decoration: none;
@@ -73,5 +77,15 @@ nav .close-btn {
 
   .mobile-nav {
     transform: translateY(100vh);
+  }
+}
+
+@media only screen and (min-width: 1025px) {
+  nav .nav-links {
+    width: 50%;
+  }
+  
+  nav .nav-links--logged-out {
+    width: 25%;
   }
 }

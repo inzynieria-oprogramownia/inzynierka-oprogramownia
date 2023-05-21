@@ -1,5 +1,7 @@
+/* eslint-disable prefer-destructuring */
 /* eslint-disable no-useless-escape */
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import Page from '../parts/Page'
@@ -9,35 +11,49 @@ import Button from '../parts/Button'
 import RecipeItem from '../parts/RecepieItem'
 import '../../styles/blogPage.css'
 
-const PostItemMockData = {
-  title: 'Piosenki opole mock 2020',
-  sections: [
-    {
-      description:
-        'Wlazł kotek na płotek i mruga krótka to piosenka nie długa. Koziołek matołek stuka w stołek',
-    },
-  ],
-  // eslint-disable-next-line prettier/prettier
-  img: 'src\\assets\\welcomePage\\main.png',
-  date: '20 kwietnia 2020',
-}
-const recepieItemData = {
-  title: 'Wegetariańska tortilla zwarzywami i ryżem',
-  // eslint-disable-next-line prettier/prettier
-  img: 'src\\assets\\welcomePage\\main.png',
-  person: 1,
-  time: '20min.',
-  kcal: '200kcal',
-  option: 'redukcja',
-}
-
 const BlogPage = () => {
+  const [posts, setPosts] = useState({})
+  const [recipes, setRecipes] = useState([])
   const navigate = useNavigate()
   const isLoggedIn = useSelector((state) => state.person.login)
 
   const handleClick = (url) => {
     navigate(url)
     window.scrollTo(0, 0)
+  }
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const postsPromise = axios.get(
+          'http://localhost/api/api/users/blog/getPosts.php'
+        )
+        const recipesPromise = axios.get(
+          'http://localhost/api/api/meal/getMeals.php'
+        )
+        const [postsResponse, recipesResponse] = await Promise.all([
+          postsPromise,
+          recipesPromise,
+        ])
+
+        setPosts(postsResponse.data)
+        setRecipes(recipesResponse.data.data)
+      } catch (error) {
+        console.error('Błąd: ', error)
+      }
+    }
+
+    fetchData()
+  }, [])
+
+  let latestPost = null
+  let remainingPosts = []
+  if (posts.data && posts.data.posts && posts.data.posts.length > 0) {
+    const sortedPosts = [...posts.data.posts].sort(
+      (a, b) => new Date(b.date) - new Date(a.date)
+    )
+    latestPost = sortedPosts[0]
+    remainingPosts = sortedPosts.slice(1, 4)
   }
 
   return (
@@ -47,16 +63,16 @@ const BlogPage = () => {
           <Heading className="dayli--heading" type="primary">
             <h2>Wpis dnia</h2>
           </Heading>
-          <PostItem horizontal data={PostItemMockData} />
+          {latestPost && <PostItem horizontal data={latestPost} />}
         </section>
         <section className="fitatuBlog">
           <Heading className="fitatuBlog--heading" type="secondary">
             <h3>Fitatu blog </h3>
           </Heading>
           <div className="fitatuBlog--wrapper">
-            <PostItem data={PostItemMockData} />
-            <PostItem data={PostItemMockData} />
-            <PostItem data={PostItemMockData} />
+            {remainingPosts.map((post) => (
+              <PostItem key={post.id} data={post} />
+            ))}
           </div>
           <div className="recepies--wrapper__buttons">
             {isLoggedIn ? (
@@ -82,12 +98,12 @@ const BlogPage = () => {
         <div className="add">GORACE OFERTY W TWOJEJ OKOLICY HIT!!!</div>
         <section className="recepies">
           <Heading className="recepies--heading" type="primary">
-            <h4>Twoje Przepisy</h4>
+            <h4>Ostatnie przepisy</h4>
           </Heading>
           <div className="recepies--wrapper">
-            <RecipeItem data={recepieItemData} />
-            <RecipeItem data={recepieItemData} />
-            <RecipeItem data={recepieItemData} />
+            {recipes.slice(-3)?.map((recipe) => (
+              <RecipeItem key={recipe.id} data={recipe} />
+            ))}
           </div>
           <div className="recepies--wrapper__buttons">
             {isLoggedIn ? (

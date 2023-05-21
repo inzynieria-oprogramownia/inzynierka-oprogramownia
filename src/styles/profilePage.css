@@ -39,9 +39,17 @@
   font-size: var(--xlFontSize);
 }
 
+.allComponent {
+  margin-bottom: 70px
+}
+
 .allComponent--search input {
   padding: 10px;
   border: 1px solid hsl(0, 0%, 80%);
+}
+
+.post img {
+  aspect-ratio: 16/9;
 }
 
 @media only screen and (max-width: 1000px) {

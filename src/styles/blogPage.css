@@ -5,6 +5,11 @@
   align-items: center;
   flex-direction: column;
 }
+
+.dayli{
+  height: 100%;
+}
+
 .dayli--heading,
 .fitatuBlog--heading,
 .recepies--heading {

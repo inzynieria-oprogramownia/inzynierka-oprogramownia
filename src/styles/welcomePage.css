@@ -1,5 +1,5 @@
 .headingImage {
-  padding: min(4vw, 4.85rem);
+  padding: 10px min(4vw, 4.85rem) min(4vw, 4.85rem) min(4vw, 4.85rem);
 }
 .headingImage img {
   width: 100%;

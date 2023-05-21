@@ -8,7 +8,7 @@
   margin: 10px 0px 20px 0px;
 }
 
-form > div:not(.select) {
+.addingForm form > div:not(.select) {
   background-color: #fff;
 }
 
