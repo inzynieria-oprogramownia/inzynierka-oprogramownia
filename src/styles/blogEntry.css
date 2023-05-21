@@ -29,7 +29,7 @@ h3 {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(10, 0, 0,50%);
+  background-color: rgba(10, 0, 0, 50%);
   text-align: center;
 }
 
@@ -51,19 +51,22 @@ h3 {
 }
 
 .entry-image {
-  width: 90%;
+  width:40vw;
+
   margin: 20px auto;
 }
 
 .entry-image img {
   width: 100%;
+  aspect-ratio: 16/9;
 }
 
 .entry-box {
-  margin: 10px 0;
+  margin: 40px 0;
 }
 
-.entry-box h2, .entry-box h3 {
+.entry-box h2,
+.entry-box h3 {
   font-weight: bold;
   margin-bottom: 10px;
 }
@@ -86,7 +89,7 @@ h3 {
 }
 
 .comment {
-  border: 1px solid #D4D4D4;
+  border: 1px solid #d4d4d4;
   margin: 15px 0;
   padding: 15px;
 }
@@ -101,20 +104,20 @@ h3 {
 
 .comment-form textarea {
   width: 100%;
-  background-color: #E1E1E1;
+  background-color: #e1e1e1;
   border: 1px solid #838383;
   padding: 10px;
   margin: 10px 0;
 }
 
-.comment-form input[type="submit"]:enabled {
+.comment-form input[type='submit']:enabled {
   background-color: var(--primaryColor);
   padding: 10px;
   color: var(--primaryWhiteColor);
   cursor: pointer;
 }
 
-.comment-form input[type="submit"]:disabled {
+.comment-form input[type='submit']:disabled {
   background-color: var(--customBlackColor);
   padding: 10px;
   color: var(--primaryWhiteColor);

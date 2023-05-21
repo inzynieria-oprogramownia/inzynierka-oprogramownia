@@ -9,6 +9,7 @@ import {
   setWeight,
   addWeight,
   addLikedMeals,
+  setPremium,
 } from '../reducers/user'
 
 export const initialState = {
@@ -19,6 +20,7 @@ export const initialState = {
   liked_meals: [],
   created_meals: [],
   user_weights: [],
+  premium: false,
 }
 export const personSlice = createSlice({
   name: 'person',
@@ -33,6 +35,7 @@ export const personSlice = createSlice({
     setUserCreatedMeals: setCreatedMeals,
     setUserData: setData,
     setUserWeight: setWeight,
+    setUserPremium: setPremium,
   },
 })
 export const {
@@ -45,5 +48,6 @@ export const {
   setUserWeight,
   addUserWeight,
   addUserLikedMeals,
+  setUserPremium,
 } = personSlice.actions
 export default personSlice.reducer

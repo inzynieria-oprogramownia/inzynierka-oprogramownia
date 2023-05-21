@@ -75,12 +75,15 @@
   align-items: center;
 }
 .bonus--button,
-.paid--button {
+.paid--button,
+.free--button {
   padding: 14px;
 }
 .paid--button {
   position: absolute;
   bottom: -30px;
+}
+.free--button {
 }
 .free {
   display: flex;
@@ -113,8 +116,8 @@
   max-width: 40%;
 }
 
-input[type='radio'] { 
-  transform: scale(2); 
+input[type='radio'] {
+  transform: scale(2);
 }
 
 @media only screen and (max-width: 1150px) {

@@ -57,6 +57,9 @@ const WeightChart = () => {
     }
     if (isDateInArr) {
       dispatch(setUserWeight(weightData))
+      axios.put(
+        `http://localhost/api/api/users/weight/updateWeight.php?id=${data.id}&weight=${weight}`
+      )
     }
   }
   const handleSetWeight = (value) => {
@@ -97,6 +100,7 @@ const WeightChart = () => {
         >
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis
+            reversed
             overlinePosition
             dataKey="date"
             height={20}

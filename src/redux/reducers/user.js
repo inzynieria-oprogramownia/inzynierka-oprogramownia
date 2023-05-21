@@ -22,6 +22,9 @@ export const addLikedMeals = (state, action) => {
 export const addWeight = (state, action) => {
   state.user_weights.push(action.payload)
 }
+export const setPremium = (state, action) => {
+  state.premium = action.payload
+}
 export const setData = (state, action) => {
   const { payload } = action
   state.id = payload.id
@@ -31,4 +34,5 @@ export const setData = (state, action) => {
   state.liked_meals = payload.liked_meals
   state.created_meals = payload.created_meals
   state.user_weights = payload.user_weights
+  state.premium = payload.premium
 }

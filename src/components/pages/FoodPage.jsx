@@ -1,12 +1,16 @@
+/* eslint-disable operator-linebreak */
 import React from 'react'
 import Brick from '../parts/Brick'
 import Page from '../parts/Page'
 import useRecipeData from '../../hooks/useRecipeData'
 import '../../styles/foodPage.css'
 
-const FoodPage = () => {
+const FoodPage = ({ type }) => {
   const data = useRecipeData()
-  const imageToRender = `http://localhost/api/api/meal/${data.backgroundImage}`
+  const imageToRender =
+    type !== 'premium'
+      ? `http://localhost/api/api/meal/${data.backgroundImage}`
+      : `http://localhost/api/api/users/premium/${data.backgroundImage}`
   return (
     <Page>
       <section className="food">
@@ -30,10 +34,10 @@ const FoodPage = () => {
           <div className="detials--wrapper">
             <section className="food--details">
               <p className="details--title">Szczegóły przepisu</p>
-              <Brick text={data.people} icon="..\src\assets\person.svg" />
-              <Brick text={data.time} icon="..\src\assets\time.svg" />
-              <Brick text={data.kcal} icon="..\src\assets\kcal.svg" />
-              <Brick text={data.option} icon="..\src\assets\option.svg" />
+              <Brick text={data.people} icon="\src\assets\person.svg" />
+              <Brick text={data.time} icon="\src\assets\time.svg" />
+              <Brick text={data.kcal} icon="\src\assets\kcal.svg" />
+              <Brick text={data.option} icon="\src\assets\option.svg" />
             </section>
             <section className="food--ingredients">
               <p className="details--title">Składniki</p>
@@ -41,7 +45,7 @@ const FoodPage = () => {
                 <Brick
                   key={JSON.stringify(ingredient)}
                   text={`${ingredient.name} ${ingredient.weight}`}
-                  icon="..\src\assets\plus.svg"
+                  icon="\src\assets\plus.svg"
                 />
               ))}
             </section>

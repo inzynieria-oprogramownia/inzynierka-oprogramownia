@@ -1,3 +1,5 @@
+/* eslint-disable indent */
+/* eslint-disable no-unused-expressions */
 /* eslint-disable camelcase */
 /* eslint-disable no-shadow */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
@@ -11,8 +13,9 @@ import Button from './Button'
 import Brick from './Brick'
 import '../../styles/recepieItem.css'
 import fetchRecipeData from '../../utils/fetchRecipeData'
+import fetchPremiumData from '../../utils/fetchPremiumData'
 
-const RecipeItem = ({ data, deleteElement }) => {
+const RecipeItem = ({ data, deleteElement, path, isAddable }) => {
   const { image, id, title, people, time, kcal, mealoption } = data
   const dispatch = useDispatch()
   const navigateTo = useNavigate()
@@ -30,9 +33,13 @@ const RecipeItem = ({ data, deleteElement }) => {
 
   const handleNavigate = (e) => {
     e.preventDefault()
-    fetchRecipeData(dispatch, id).then(() => {
-      navigateTo(`/food/${id}`)
-    })
+    path
+      ? fetchPremiumData(dispatch, id).then(() => {
+          navigateTo(`${path}${id}`)
+        })
+      : fetchRecipeData(dispatch, id).then(() => {
+          navigateTo(`/food/${id}`)
+        })
   }
   const handleClick = (event) => {
     const iconElement = event.currentTarget
@@ -59,23 +66,27 @@ const RecipeItem = ({ data, deleteElement }) => {
       iconElement.classList.remove('fa-bounce')
     }, 1000)
   }
-  const imageToRender = `http://localhost/api/api/meal/${image}`
+  const imageToRender = !isAddable
+    ? `http://localhost/api/api/users/premium/${image}`
+    : `http://localhost/api/api/meal/${image}`
 
   return (
     <div className="recipeItem">
       <img className="recipeItem--image" src={imageToRender} alt={title} />
       <div className="recipeItem--wrapper__outer">
-        <i
-          className="fa-regular fa-heart"
-          style={{ color: isLiked ? 'red' : 'black' }}
-          onClick={handleClick}
-        />
+        {isAddable && (
+          <i
+            className="fa-regular fa-heart"
+            style={{ color: isLiked ? 'red' : 'black' }}
+            onClick={handleClick}
+          />
+        )}
         <p className="recipeItem--title">{title}</p>
         <div className="recipeItem--wrapper">
-          <Brick icon="..\src\assets\person.svg" text={people} />
-          <Brick icon="..\src\assets\time.svg" text={time} />
-          <Brick icon="..\src\assets\kcal.svg" text={`${kcal} kcal`} />
-          <Brick icon="..\src\assets\option.svg" text={mealoption} />
+          <Brick icon="\src\assets\person.svg" text={people} />
+          <Brick icon="\src\assets\time.svg" text={time} />
+          <Brick icon="\src\assets\kcal.svg" text={kcal} />
+          <Brick icon="\src\assets\option.svg" text={mealoption} />
         </div>
         <Button onClick={handleNavigate} className="recipeItem--button">
           <p>Poznaj szczegóły</p>
