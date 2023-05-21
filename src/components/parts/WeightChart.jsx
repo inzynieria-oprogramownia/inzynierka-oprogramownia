@@ -1,4 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import {
@@ -23,6 +22,7 @@ const CustomLabel = ({ x, y, stroke, value }) => (
     {`${value}kg`}
   </text>
 )
+
 const CustomizedAxisTick = ({ x, y, payload }) => (
   <g transform={`translate(${x},${y})`}>
     <text x={0} y={0} textAnchor="end" fill="#666" transform="rotate(-45)">
@@ -47,6 +47,7 @@ const WeightChart = () => {
       return el
     })
     const isDateInArr = dates.includes(currentDate)
+
     if (!isDateInArr) {
       const element = { date: currentDate, weight }
       dispatch(addUserWeight(element))
@@ -55,6 +56,7 @@ const WeightChart = () => {
         ...element,
       })
     }
+
     if (isDateInArr) {
       dispatch(setUserWeight(weightData))
       axios.put(
@@ -62,9 +64,17 @@ const WeightChart = () => {
       )
     }
   }
+
   const handleSetWeight = (value) => {
     if (value < 200 && value >= 0) setWeight(value)
   }
+
+  // Sortowanie danych po dacie
+  const sortedData = [...data.user_weights].sort((a, b) => {
+    const dateA = new Date(a.date)
+    const dateB = new Date(b.date)
+    return dateA - dateB
+  })
 
   return (
     <>
@@ -96,11 +106,10 @@ const WeightChart = () => {
             top: 70,
             left: -20,
           }}
-          data={data.user_weights}
+          data={sortedData} // Przekazanie posortowanych danych
         >
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis
-            reversed
             overlinePosition
             dataKey="date"
             height={20}
@@ -122,4 +131,5 @@ const WeightChart = () => {
     </>
   )
 }
+
 export default WeightChart
