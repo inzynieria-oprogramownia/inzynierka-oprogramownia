@@ -34,7 +34,7 @@ const BlogEntry = () => {
         <div className="entry-image">
           <img src={imageToRender} alt="entry" />
         </div>
-        {comments.map((section, index) => (
+        {data.sections.map((section, index) => (
           <div className="entry-box" key={index}>
             <h2>{section.name}</h2>
             <p>{section.description}</p>
@@ -42,7 +42,7 @@ const BlogEntry = () => {
         ))}
         <div className="entry-comment">
           <h2>Komentarze</h2>
-          {data.comments.map(
+          {comments.map(
             (comment, i) =>
               comment.login && (
                 <div className="comment-box" key={i}>

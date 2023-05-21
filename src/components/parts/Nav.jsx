@@ -32,6 +32,9 @@ const Nav = () => {
         </NavLink>
         {isLoggedIn ? (
           <>
+            <NavLink className="nav-link" to="/plan">
+              Plan
+            </NavLink>
             <NavLink className="nav-link" to="/food">
               Przepisy
             </NavLink>

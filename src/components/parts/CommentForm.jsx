@@ -20,8 +20,6 @@ const CommentForm = () => {
         { userID, postID: id, comment }
       )
       dispatch(addPostComment({ login, comment }))
-    } else {
-      console.log('nie wyslalem')
     }
   }
 

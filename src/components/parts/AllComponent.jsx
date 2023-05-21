@@ -48,6 +48,7 @@ const AllComponent = ({ render, type }) => {
       <div className="allComponent--wrapper">
         {data?.map((el) => (
           <ComponentToRender
+            isAddable
             deleteElement={type === 'likedMeals' ? deleteElementHandler : null}
             key={JSON.stringify(el)}
             data={el}
