@@ -15,7 +15,7 @@ const BlogPage = () => {
   const [posts, setPosts] = useState({})
   const [recipes, setRecipes] = useState([])
   const navigate = useNavigate()
-  const isLoggedIn = useSelector((state) => state.person.login)
+  const { isLoggedIn, premium } = useSelector((state) => state.person)
 
   const handleClick = (url) => {
     navigate(url)
@@ -95,14 +95,16 @@ const BlogPage = () => {
             </Button>
           </div>
         </section>
-        <div className="add">GORACE OFERTY W TWOJEJ OKOLICY HIT!!!</div>
+        {premium === '0' && (
+          <div className="add">GORACE OFERTY W TWOJEJ OKOLICY HIT!!!</div>
+        )}
         <section className="recepies">
           <Heading className="recepies--heading" type="primary">
             <h4>Ostatnie przepisy</h4>
           </Heading>
           <div className="recepies--wrapper">
             {recipes.slice(-3)?.map((recipe) => (
-              <RecipeItem key={recipe.id} data={recipe} />
+              <RecipeItem key={recipe.id} data={recipe} isAddable />
             ))}
           </div>
           <div className="recepies--wrapper__buttons">
