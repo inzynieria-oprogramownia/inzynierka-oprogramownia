@@ -1,18 +1,15 @@
-import React, { useState } from 'react'
-import axios from 'axios'
+import React from 'react'
+
 import Page from '../parts/Page'
 import AllComponent from '../parts/AllComponent'
+import useFetch from '../../hooks/useFetch'
 
 const AllBlogPage = () => {
-  const [state, setState] = useState([])
-  axios
-    .get('http://localhost/api/api/users/blog/getPosts.php')
-    .then((response) => {
-      setState(response.data.data.posts)
-    })
+  const [data] = useFetch('http://localhost/api/api/users/blog/getPosts.php')
+  console.log(data)
   return (
     <Page>
-      <AllComponent render={state} type="blog" />
+      <AllComponent render={data?.posts} type="blog" />
     </Page>
   )
 }
