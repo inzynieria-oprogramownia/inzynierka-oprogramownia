@@ -9,6 +9,7 @@ import '../../styles/allComponent.css'
 const AllComponent = ({ render, type }) => {
   const navigate = useNavigate()
   const [data, setData] = useState([])
+  const [searchTerm, setSearchTerm] = useState('')
   const handleClick = (url) => {
     navigate(url)
     window.scrollTo(0, 0)
@@ -16,15 +17,24 @@ const AllComponent = ({ render, type }) => {
   useEffect(() => {
     setData(render)
   }, [render])
+
   const deleteElementHandler = (id) => {
-    const newData = data.filter((el) => el.id !== id)
+    const newData = data?.filter((el) => el.id !== id)
     setData(newData)
   }
+  const handleSearch = (event) => {
+    setSearchTerm(event.target.value)
+  }
+  const filteredData = data?.filter((el) => {
+    const pattern = new RegExp(searchTerm, 'i')
+    return pattern.test(el.title)
+  })
+
   const ComponentToRender = type === 'blog' ? PostItem : RecipeItem
   return (
     <section className="allComponent">
       <div className="allComponent--search">
-        <Input placeholder="Szukaj" />
+        <Input placeholder="Szukaj" onChange={handleSearch} />
         {type === 'blog' ? (
           <Button
             className="fitatuBlog--button profile-btn"
@@ -46,7 +56,7 @@ const AllComponent = ({ render, type }) => {
         )}
       </div>
       <div className="allComponent--wrapper">
-        {data?.map((el) => (
+        {filteredData?.map((el) => (
           <ComponentToRender
             isAddable
             deleteElement={type === 'likedMeals' ? deleteElementHandler : null}

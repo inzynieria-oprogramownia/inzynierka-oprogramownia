@@ -7,6 +7,7 @@ const AllPosts = ({ id, panel }) => {
     `http://localhost/api/api/users/blog/getUsersPosts.php?userid=${id}`,
     panel
   )
+  console.log('posty', posts)
   return <AllComponent render={posts?.posts} type="blog" />
 }
 

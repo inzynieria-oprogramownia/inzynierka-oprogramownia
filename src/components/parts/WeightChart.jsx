@@ -58,7 +58,7 @@ const WeightChart = () => {
     if (isDateInArr) {
       dispatch(setUserWeight(weightData))
       axios.put(
-        `http://localhost/api/api/users/weight/updateWeight.php?id=${data.id}&weight=${weight}`
+        `http://localhost/api/api/users/weight/updateWeight.php?userid=${data.id}&weight=${weight}`
       )
     }
   }
