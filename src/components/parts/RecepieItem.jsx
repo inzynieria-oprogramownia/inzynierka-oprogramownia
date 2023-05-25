@@ -52,6 +52,7 @@ const RecipeItem = ({ data, deleteElement, path, isAddable }) => {
       axios.delete(
         `http://localhost/api/api/users/removeLikedMeal.php?userID=${userID}&mealID=${id}`
       )
+      iconElement.classList.remove('fa-bounce')
       deleteElement(id)
     } else {
       setIsLiked(true)
@@ -63,7 +64,7 @@ const RecipeItem = ({ data, deleteElement, path, isAddable }) => {
     }
 
     setTimeout(() => {
-      iconElement.classList.remove('fa-bounce')
+      iconElement.classList.toggle('fa-bounce')
     }, 1000)
   }
   const imageToRender = !isAddable
